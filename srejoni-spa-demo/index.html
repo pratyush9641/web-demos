@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srejoni Spa &amp; Aromatherapy — Ladies Luxury Salon, Salt Lake Kolkata | Est. 2008</title>
+<meta name="description" content="Srejoni Spa & Aromatherapy — Salt Lake's ladies-only luxury salon & spa since 2008. Bridal makeup, hair rituals, facials, aromatherapy, nails. ⭐4.9 · 367+ reviews. Reserve on WhatsApp: 099035 37941">
+<meta name="keywords" content="luxury ladies salon salt lake, bridal makeup kolkata, spa salt lake, aromatherapy kolkata, ladies parlour bidhannagar">
+<meta property="og:title" content="Srejoni Spa & Aromatherapy — Ladies Luxury Salon, Salt Lake">
+<meta property="og:description" content="Fifteen years of quiet luxury. ⭐4.9 rated by 367+ women. Reserve your ritual on WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#191016;
+    --aubergine:#241521;
+    --aubergine-2:#2e1a29;
+    --ivory:#f4ede4;
+    --ivory-2:#efe6d9;
+    --champagne:#e6d5bb;
+    --gold:#c2a05e;
+    --gold-dim:rgba(194,160,94,.4);
+    --text-dark:#2c2026;
+    --muted-dark:#7d6f76;
+    --muted-light:#b9a9b1;
+    --wa:#25d366;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;font-weight:300;background:var(--ivory);color:var(--text-dark);line-height:1.75;overflow-x:hidden;font-size:15.5px}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  ::selection{background:var(--gold);color:#fff}
+
+  /* typography system */
+  .display{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.12}
+  .display em{font-style:italic;font-weight:400;color:var(--gold)}
+  .kicker{font-size:10.5px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:16px}
+  .kicker::before{content:"";width:44px;height:1px;background:var(--gold-dim)}
+  .kicker.centered{justify-content:center}
+  .kicker.centered::after{content:"";width:44px;height:1px;background:var(--gold-dim)}
+  .roman{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:3px;color:var(--muted-dark)}
+
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* buttons — refined, squared-ish */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 40px;font-size:11.5px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;cursor:pointer;border:none;transition:.4s;font-family:'Jost',sans-serif}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:#a9884b;letter-spacing:4.5px}
+  .btn-ghost{background:transparent;color:var(--ivory);border:1px solid rgba(244,237,228,.45)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);letter-spacing:4.5px}
+  .btn-ghost-dark{background:transparent;color:var(--text-dark);border:1px solid rgba(44,32,38,.35)}
+  .btn-ghost-dark:hover{border-color:var(--gold);color:var(--gold);letter-spacing:4.5px}
+  .btn-wa{background:var(--wa);color:#fff}
+  .btn-wa:hover{background:#1fb457;letter-spacing:4.5px}
+
+  /* ═════════ NAV ═════════ */
+  nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:26px 40px;transition:.45s;display:flex;align-items:center;justify-content:space-between}
+  nav.scrolled{background:rgba(25,16,22,.96);backdrop-filter:blur(12px);padding:14px 40px;box-shadow:0 1px 0 rgba(194,160,94,.18)}
+  .nav-logo{display:flex;flex-direction:column;line-height:1;color:var(--ivory)}
+  .nav-logo b{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:500;letter-spacing:2px}
+  .nav-logo small{font-size:8.5px;letter-spacing:4.5px;text-transform:uppercase;color:var(--gold);margin-top:5px}
+  .nav-links{display:flex;gap:38px;align-items:center}
+  .nav-links a{color:var(--ivory);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:400;position:relative;padding:4px 0;transition:.3s}
+  .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:.4s}
+  .nav-links a:not(.nav-cta):hover{color:var(--gold)}
+  .nav-links a:not(.nav-cta):hover::after{width:100%}
+  .nav-cta{border:1px solid var(--gold);color:var(--gold) !important;padding:11px 26px}
+  .nav-cta:hover{background:var(--gold);color:#fff !important}
+  .menu-btn{display:none;background:none;border:none;color:var(--ivory);font-size:24px;cursor:pointer}
+  @media(max-width:920px){
+    nav{padding:20px 22px}
+    nav.scrolled{padding:14px 22px}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(25,16,22,.98);flex-direction:column;padding:34px;gap:24px}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+  }
+
+  /* ═════════ HERO ═════════ */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--noir)}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;animation:slowzoom 22s ease-out forwards;opacity:.5}
+  @keyframes slowzoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,16,22,.55) 0%,rgba(25,16,22,.25) 45%,rgba(25,16,22,.88) 100%)}
+  .hero-content{position:relative;z-index:2;padding:140px 24px 90px;max-width:880px}
+  .hero-est{font-size:10.5px;letter-spacing:6px;text-transform:uppercase;color:var(--champagne);margin-bottom:30px;display:flex;align-items:center;justify-content:center;gap:20px}
+  .hero-est::before,.hero-est::after{content:"";width:52px;height:1px;background:var(--gold-dim)}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,8vw,96px);line-height:1.05;color:var(--ivory);margin-bottom:30px}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--champagne)}
+  .hero p.sub{color:var(--muted-light);font-size:15px;font-weight:200;letter-spacing:1.2px;max-width:520px;margin:0 auto 44px}
+  .hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:54px}
+  .hero-rating{color:var(--champagne);font-size:11px;letter-spacing:3px;text-transform:uppercase}
+  .hero-rating .st{color:var(--gold);font-size:14px;letter-spacing:6px;display:block;margin-bottom:9px}
+  .hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:var(--champagne);font-size:9.5px;letter-spacing:4px;text-transform:uppercase;opacity:.7}
+  .hero-scroll::after{content:"";display:block;width:1px;height:44px;background:linear-gradient(var(--gold),transparent);margin:12px auto 0}
+
+  /* ═════════ MARQUEE ═════════ */
+  .marquee{background:var(--noir);border-top:1px solid rgba(194,160,94,.2);border-bottom:1px solid rgba(194,160,94,.2);overflow:hidden;padding:17px 0}
+  .marquee-track{display:flex;width:max-content;animation:scroll 36s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee span{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);padding:0 34px;white-space:nowrap}
+  .marquee i{font-style:normal;color:rgba(194,160,94,.5)}
+
+  /* ═════════ INTRO EDITORIAL ═════════ */
+  .intro{background:var(--ivory);padding:130px 40px}
+  .intro-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:start}
+  @media(max-width:920px){.intro{padding:90px 24px}.intro-in{grid-template-columns:1fr;gap:50px}}
+  .intro h2{font-size:clamp(34px,4.6vw,58px);margin-top:26px;color:var(--text-dark)}
+  .intro-right p{color:var(--muted-dark);margin-bottom:26px;font-size:15.5px}
+  .intro-right .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--gold);margin-bottom:50px}
+  .intro-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(44,32,38,.15)}
+  .intro-stats>div{padding:26px 10px 0;text-align:left}
+  .intro-stats>div+div{border-left:1px solid rgba(44,32,38,.15);padding-left:26px}
+  .intro-stats b{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.4vw,44px);font-weight:500;display:block;line-height:1;color:var(--text-dark)}
+  .intro-stats b i{font-style:normal;color:var(--gold);font-size:.7em}
+  .intro-stats span{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted-dark)}
+
+  /* ═════════ MENU (services) ═════════ */
+  .menu{background:var(--ivory-2);padding:130px 40px;position:relative}
+  @media(max-width:920px){.menu{padding:90px 24px}}
+  .menu-head{max-width:1160px;margin:0 auto 80px;text-align:center}
+  .menu-head h2{font-size:clamp(36px,5vw,62px);margin-top:26px}
+  .menu-head p{color:var(--muted-dark);max-width:460px;margin:18px auto 0;font-size:15px}
+  .menu-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0 90px}
+  @media(max-width:860px){.menu-grid{grid-template-columns:1fr}}
+  .menu-cat{margin-bottom:64px}
+  .menu-cat h3{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:16px}
+  .menu-cat h3::after{content:"";flex:1;height:1px;background:rgba(44,32,38,.14)}
+  .menu-item{padding:20px 0;border-bottom:1px solid rgba(44,32,38,.1)}
+  .menu-item:last-child{border-bottom:none}
+  .mi-top{display:flex;align-items:baseline;gap:14px}
+  .mi-top b{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--text-dark)}
+  .mi-top .mi-line{flex:1;border-bottom:1px dotted rgba(44,32,38,.3);transform:translateY(-5px)}
+  .mi-top .mi-mark{font-size:11px;color:var(--gold);letter-spacing:2px;white-space:nowrap}
+  .menu-item p{font-size:13.5px;color:var(--muted-dark);margin-top:4px;font-weight:300}
+  .menu-foot{max-width:1160px;margin:20px auto 0;text-align:center;color:var(--muted-dark);font-size:13px}
+  .menu-foot a{color:var(--gold);border-bottom:1px solid var(--gold-dim);padding-bottom:2px;transition:.3s}
+  .menu-foot a:hover{border-color:var(--gold)}
+
+  /* ═════════ EDITORIAL ROWS ═════════ */
+  .edit-row{display:grid;grid-template-columns:1fr 1fr;min-height:640px;background:var(--noir)}
+  @media(max-width:860px){.edit-row{grid-template-columns:1fr;min-height:0}}
+  .edit-img{position:relative;overflow:hidden;min-height:420px}
+  .edit-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:1.2s ease}
+  .edit-row:hover .edit-img img{transform:scale(1.05)}
+  .edit-txt{display:flex;flex-direction:column;justify-content:center;padding:90px 9%;color:var(--ivory);background:var(--aubergine)}
+  .edit-row.alt .edit-txt{background:var(--noir)}
+  .edit-txt .roman{color:var(--gold);margin-bottom:22px}
+  .edit-txt h2{font-size:clamp(32px,4vw,52px);color:var(--ivory);margin-bottom:24px}
+  .edit-txt p{color:var(--muted-light);font-weight:200;margin-bottom:18px;font-size:15px;max-width:440px}
+  .edit-txt .edit-list{margin:10px 0 36px;display:grid;gap:13px}
+  .edit-txt .edit-list span{font-size:13px;letter-spacing:1.5px;color:var(--champagne);display:flex;gap:14px;align-items:center}
+  .edit-txt .edit-list span::before{content:"✦";color:var(--gold);font-size:10px}
+  .edit-txt .btn{align-self:flex-start}
+  @media(max-width:860px){.edit-txt{padding:66px 26px}}
+  .edit-row.alt .edit-img{order:2}
+  @media(max-width:860px){.edit-row.alt .edit-img{order:0}}
+
+  /* ═════════ QUOTE / TESTIMONIAL ═════════ */
+  .quote-sec{background:var(--ivory);padding:140px 40px;text-align:center;position:relative}
+  @media(max-width:920px){.quote-sec{padding:95px 24px}}
+  .quote-sec .ornament{font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--gold);line-height:.5;display:block;margin-bottom:36px}
+  .quote-slide{max-width:820px;margin:0 auto;min-height:190px}
+  .quote-slide blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(23px,3.2vw,34px);line-height:1.5;color:var(--text-dark);transition:opacity .8s}
+  .quote-slide .attr{margin-top:30px;font-size:10.5px;letter-spacing:4px;text-transform:uppercase;color:var(--muted-dark)}
+  .quote-slide .attr b{color:var(--gold);font-weight:500}
+  .q-dots{display:flex;gap:12px;justify-content:center;margin-top:44px}
+  .q-dot{width:26px;height:1.5px;background:rgba(44,32,38,.2);border:none;cursor:pointer;transition:.4s;padding:0}
+  .q-dot.on{background:var(--gold);width:44px}
+  .q-google{margin-top:34px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted-dark)}
+  .q-google .st{color:var(--gold);letter-spacing:5px;font-size:13px}
+
+  /* ═════════ GALLERY STRIP ═════════ */
+  .gallery{background:var(--noir);padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .g-item{position:relative;overflow:hidden;aspect-ratio:3/3.8}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:1s ease;opacity:.85}
+  .g-item:hover img{transform:scale(1.07);opacity:1}
+  .g-item span{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 20px;background:linear-gradient(transparent,rgba(25,16,22,.9));color:var(--champagne);font-size:10px;letter-spacing:3.5px;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.5s}
+  .g-item:hover span{opacity:1;transform:none}
+
+  /* ═════════ RESERVE (booking) ═════════ */
+  .reserve{background:var(--aubergine);padding:130px 40px;color:var(--ivory);position:relative;overflow:hidden}
+  .reserve::before{content:"✦";position:absolute;font-size:400px;font-family:serif;color:rgba(194,160,94,.05);right:-80px;top:-60px;line-height:1}
+  @media(max-width:920px){.reserve{padding:90px 24px}}
+  .reserve-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:100px;align-items:start;position:relative;z-index:1}
+  @media(max-width:920px){.reserve-in{grid-template-columns:1fr;gap:56px}}
+  .reserve h2{font-size:clamp(36px,4.6vw,58px);color:var(--ivory);margin:26px 0 24px}
+  .reserve .r-sub{color:var(--muted-light);font-weight:200;margin-bottom:46px;max-width:420px}
+  .r-details{display:grid;gap:26px;border-top:1px solid rgba(194,160,94,.25);padding-top:38px}
+  .r-details>div{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline}
+  .r-details dt{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+  .r-details dd{font-size:14.5px;color:var(--ivory);font-weight:300}
+  .r-details dd small{display:block;color:var(--muted-light);font-size:12.5px}
+  .r-details dd a{color:var(--champagne);border-bottom:1px solid var(--gold-dim)}
+  /* form — underline style */
+  .r-form{background:transparent}
+  .rf-row{display:grid;grid-template-columns:1fr 1fr;gap:38px}
+  @media(max-width:560px){.rf-row{grid-template-columns:1fr}}
+  .rfield{margin-bottom:36px}
+  .rfield label{display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .rfield input,.rfield select,.rfield textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(244,237,228,.3);padding:10px 2px;font-family:'Jost',sans-serif;font-weight:300;font-size:16px;color:var(--ivory);transition:.4s;border-radius:0}
+  .rfield select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'><path d='M1 1l4.5 4.5L10 1' stroke='%23c2a05e' fill='none' stroke-width='1.4'/></svg>");background-repeat:no-repeat;background-position:right 4px center;cursor:pointer}
+  .rfield select option{background:var(--aubergine);color:var(--ivory)}
+  .rfield input::placeholder,.rfield textarea::placeholder{color:rgba(244,237,228,.35)}
+  .rfield input:focus,.rfield select:focus,.rfield textarea:focus{outline:none;border-bottom-color:var(--gold)}
+  .rfield input[type="date"]{color-scheme:dark}
+  .r-note{font-size:12px;color:var(--muted-light);margin-top:18px;letter-spacing:.5px;font-weight:200}
+
+  /* ═════════ FAQ ═════════ */
+  .faq{background:var(--ivory);padding:130px 40px}
+  @media(max-width:920px){.faq{padding:90px 24px}}
+  .faq-in{max-width:760px;margin:0 auto}
+  .faq-in .head{text-align:center;margin-bottom:66px}
+  .faq-in h2{font-size:clamp(34px,4.4vw,54px);margin-top:26px}
+  .faq-item{border-bottom:1px solid rgba(44,32,38,.15)}
+  .faq-item summary{padding:26px 4px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;transition:.3s}
+  .faq-item summary:hover{color:var(--gold)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";font-family:'Jost',sans-serif;font-weight:200;font-size:26px;color:var(--gold);transition:.4s;flex-shrink:0}
+  .faq-item[open] summary::after{transform:rotate(45deg)}
+  .faq-item .faq-a{padding:0 4px 28px;font-size:14.5px;color:var(--muted-dark);max-width:640px}
+
+  /* ═════════ CONTACT / MAP ═════════ */
+  .visit{background:var(--ivory-2);padding:130px 40px}
+  @media(max-width:920px){.visit{padding:90px 24px}}
+  .visit-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+  @media(max-width:880px){.visit-in{grid-template-columns:1fr;gap:48px}}
+  .visit h2{font-size:clamp(34px,4.4vw,54px);margin:26px 0 34px}
+  .v-lines{display:grid;gap:30px}
+  .v-lines>div{border-left:1px solid var(--gold-dim);padding-left:26px}
+  .v-lines dt{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .v-lines dd{font-size:15px;color:var(--text-dark);font-weight:300}
+  .v-lines dd small{color:var(--muted-dark);display:block;font-size:13px}
+  .map-box{overflow:hidden;min-height:460px;filter:sepia(.28) saturate(.8);border:1px solid rgba(44,32,38,.15)}
+  .map-box iframe{width:100%;height:100%;min-height:460px;border:0}
+
+  /* ═════════ FOOTER ═════════ */
+  footer{background:var(--noir);color:var(--muted-light);text-align:center;padding:90px 24px 0}
+  footer .f-mono{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--gold);display:block;line-height:1}
+  footer .f-name{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--ivory);letter-spacing:3px;margin-top:18px}
+  footer .f-tag{font-size:9.5px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-top:8px}
+  .f-links{display:flex;gap:38px;justify-content:center;margin:44px 0;flex-wrap:wrap}
+  .f-links a{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--muted-light);transition:.3s}
+  .f-links a:hover{color:var(--gold)}
+  .f-bottom{border-top:1px solid rgba(194,160,94,.15);padding:26px;font-size:11.5px;letter-spacing:1.5px;font-weight:200}
+  .f-bottom b{color:var(--champagne);font-weight:400}
+
+  /* ═════════ FLOATING BUTTONS ═════════ */
+  .wa-float{position:fixed;bottom:26px;right:26px;z-index:950;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.4);transition:.3s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+  .bot-float{position:fixed;bottom:96px;right:26px;z-index:950;width:58px;height:58px;border-radius:50%;background:var(--noir);border:1px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);box-shadow:0 10px 30px rgba(25,16,22,.5);transition:.3s}
+  .bot-float:hover{transform:scale(1.08);background:var(--gold);color:#fff}
+
+  /* ═════════ CONCIERGE CHAT ═════════ */
+  .chat-panel{position:fixed;bottom:96px;right:26px;z-index:960;width:370px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 130px);background:var(--ivory);box-shadow:0 30px 80px rgba(0,0,0,.45);display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(194,160,94,.35)}
+  .chat-panel.open{display:flex}
+  .chat-head{background:var(--noir);color:var(--ivory);padding:20px 22px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(194,160,94,.3)}
+  .chat-head .bot-av{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold)}
+  .chat-head b{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;display:block;letter-spacing:1px}
+  .chat-head small{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:400}
+  .chat-close{margin-left:auto;background:none;border:none;color:var(--ivory);font-size:22px;cursor:pointer;line-height:1;font-weight:200}
+  .chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--ivory)}
+  .msg{max-width:85%;padding:13px 16px;font-size:13.5px;line-height:1.6;white-space:pre-line;font-weight:300}
+  .msg.bot{background:#fff;border:1px solid rgba(44,32,38,.08);align-self:flex-start;color:var(--text-dark);box-shadow:0 2px 10px rgba(44,32,38,.05)}
+  .msg.user{background:var(--noir);color:var(--ivory);align-self:flex-end}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start}
+  .chip{background:transparent;border:1px solid var(--gold);color:var(--text-dark);padding:8px 16px;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400;cursor:pointer;transition:.3s;font-family:'Jost',sans-serif}
+  .chip:hover{background:var(--gold);color:#fff}
+  .chat-input{display:flex;gap:10px;padding:14px;background:#fff;border-top:1px solid rgba(44,32,38,.1)}
+  .chat-input input{flex:1;border:none;border-bottom:1px solid rgba(44,32,38,.25);padding:10px 4px;font-size:14px;font-family:'Jost',sans-serif;font-weight:300;background:transparent;border-radius:0}
+  .chat-input input:focus{outline:none;border-bottom-color:var(--gold)}
+  .chat-input button{width:44px;height:44px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-size:16px;cursor:pointer;transition:.3s}
+  .chat-input button:hover{background:var(--gold);color:#fff}
+  .typing{display:inline-flex;gap:4px;padding:14px}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}
+  .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  @media(max-width:480px){
+    .chat-panel{right:16px;bottom:88px}
+    .wa-float{bottom:16px;right:16px}
+    .bot-float{bottom:88px;right:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═════════ NAV ═════════ -->
+<nav id="nav">
+  <a href="#home" class="nav-logo"><b>Srejoni</b><small>Spa &amp; Aromatherapy</small></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#menu">The Menu</a>
+    <a href="#bridal">Bridal</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#visit">Visit</a>
+    <a href="#reserve" class="nav-cta">Reserve</a>
+  </div>
+  <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- ═════════ HERO ═════════ -->
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-est">Est. 2008 &nbsp;·&nbsp; Ladies Only &nbsp;·&nbsp; Salt Lake</div>
+    <h1>Beauty, in its most<br><em>serene</em> form</h1>
+    <p class="sub">A ladies-only sanctuary of aromatherapy, artistry and quiet luxury — trusted by the women of Kolkata for fifteen years.</p>
+    <div class="hero-ctas">
+      <a href="#reserve" class="btn btn-gold">Reserve Your Ritual</a>
+      <a href="#menu" class="btn btn-ghost">Explore the Menu</a>
+    </div>
+    <div class="hero-rating"><span class="st">★★★★★</span>4.9 — 367 Google Reviews</div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+<!-- ═════════ MARQUEE ═════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Bridal Artistry <i>✦</i></span><span>Aromatherapy <i>✦</i></span><span>Hair Rituals <i>✦</i></span><span>Facials <i>✦</i></span><span>Hands &amp; Feet <i>✦</i></span><span>Ladies Only <i>✦</i></span>
+    <span>Bridal Artistry <i>✦</i></span><span>Aromatherapy <i>✦</i></span><span>Hair Rituals <i>✦</i></span><span>Facials <i>✦</i></span><span>Hands &amp; Feet <i>✦</i></span><span>Ladies Only <i>✦</i></span>
+  </div>
+</div>
+
+<!-- ═════════ INTRO ═════════ -->
+<section class="intro">
+  <div class="intro-in">
+    <div class="rv">
+      <div class="kicker">The House of Srejoni</div>
+      <h2 class="display">Fifteen years of<br><em>quiet luxury</em><br>in Salt Lake</h2>
+    </div>
+    <div class="intro-right rv">
+      <p>Since 2008, Srejoni has been a private world where the women of Kolkata come to be cared for — unhurried, undisturbed, and utterly at ease.</p>
+      <p>Every ritual is performed by our senior beauticians with premium professional products, in an atmosphere designed for one thing only: your complete serenity.</p>
+      <div class="sig">— The Srejoni Family</div>
+      <div class="intro-stats">
+        <div><b>15<i>+</i></b><span>Years</span></div>
+        <div><b>367<i>+</i></b><span>Reviews · 4.9</span></div>
+        <div><b>25<i>+</i></b><span>Rituals</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ THE MENU ═════════ -->
+<section class="menu" id="menu">
+  <div class="menu-head rv">
+    <div class="kicker centered">I &nbsp;·&nbsp; The Menu</div>
+    <h2 class="display">A curated menu<br>of <em>rituals</em></h2>
+    <p>Each service is unhurried and tailored to you. Ask us on WhatsApp for the full rate card.</p>
+  </div>
+  <div class="menu-grid">
+    <div>
+      <div class="menu-cat rv">
+        <h3>Makeup</h3>
+        <div class="menu-item">
+          <div class="mi-top"><b>Bridal Makeup</b><span class="mi-line"></span><span class="mi-mark">Signature ✦</span></div>
+          <p>HD bridal artistry with hair and draping — includes a private trial session.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Reception &amp; Party Looks</b><span class="mi-line"></span></div>
+          <p>Occasion glam, from understated elegance to full radiance.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Pre-Bridal Journey</b><span class="mi-line"></span></div>
+          <p>A multi-week programme of facials, polishing and care before your day.</p>
+        </div>
+      </div>
+      <div class="menu-cat rv">
+        <h3>Skin</h3>
+        <div class="menu-item">
+          <div class="mi-top"><b>Signature Glow Facial</b><span class="mi-line"></span><span class="mi-mark">Loved ✦</span></div>
+          <p>Deep cleansing and radiance for every skin type.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>De-Tan &amp; Clean-Up</b><span class="mi-line"></span></div>
+          <p>Gentle renewal for sun-tired skin, before any occasion.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Body Polishing</b><span class="mi-line"></span></div>
+          <p>Full-body exfoliation and nourishment, head to toe.</p>
+        </div>
+      </div>
+      <div class="menu-cat rv">
+        <h3>Hands &amp; Feet</h3>
+        <div class="menu-item">
+          <div class="mi-top"><b>Luxury Manicure &amp; Pedicure</b><span class="mi-line"></span></div>
+          <p>An hour of pure care for your hands and feet.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Nail Art &amp; Gel</b><span class="mi-line"></span></div>
+          <p>From quiet French tips to statement artistry.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="menu-cat rv">
+        <h3>Hair</h3>
+        <div class="menu-item">
+          <div class="mi-top"><b>Cut &amp; Styling</b><span class="mi-line"></span></div>
+          <p>Precision cuts shaped to your face and lifestyle.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Global Colour &amp; Highlights</b><span class="mi-line"></span></div>
+          <p>Dimension and depth, from subtle balayage to bold change.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Keratin &amp; Smoothening</b><span class="mi-line"></span></div>
+          <p>Silk-smooth, frizz-free hair that lasts for months.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Nourishing Hair Spa</b><span class="mi-line"></span></div>
+          <p>Deep conditioning ritual with scalp massage.</p>
+        </div>
+      </div>
+      <div class="menu-cat rv">
+        <h3>Spa &amp; Wellness</h3>
+        <div class="menu-item">
+          <div class="mi-top"><b>Srejoni Aromatherapy Ritual</b><span class="mi-line"></span><span class="mi-mark">Signature ✦</span></div>
+          <p>Our namesake — essential oils and soothing massage that melt the week away.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Head, Neck &amp; Shoulder Ritual</b><span class="mi-line"></span></div>
+          <p>Targeted release for where the day settles.</p>
+        </div>
+      </div>
+      <div class="menu-cat rv">
+        <h3>Essentials</h3>
+        <div class="menu-item">
+          <div class="mi-top"><b>Full-Body Waxing</b><span class="mi-line"></span></div>
+          <p>Gentle, hygienic and quick — in complete privacy.</p>
+        </div>
+        <div class="menu-item">
+          <div class="mi-top"><b>Threading &amp; Brow Shaping</b><span class="mi-line"></span></div>
+          <p>Clean lines, perfectly framed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-foot rv">Rates shared on request — <a href="https://wa.me/919903537941?text=Hello%20Srejoni%2C%20may%20I%20have%20the%20rate%20card%3F" target="_blank" rel="noopener">ask on WhatsApp</a> and we'll reply right away.</div>
+</section>
+
+<!-- ═════════ EDITORIAL: BRIDAL ═════════ -->
+<div class="edit-row" id="bridal">
+  <div class="edit-img"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000&q=80&auto=format&fit=crop" alt="Bridal makeup artistry at Srejoni" loading="lazy"></div>
+  <div class="edit-txt">
+    <span class="roman rv">II &nbsp;·&nbsp; The Bridal Atelier</span>
+    <h2 class="display rv">Your day,<br><em>perfected</em></h2>
+    <p class="rv">A bride is remembered in photographs forever. Our senior artists design your look around your face, your outfit and your story — never from a template.</p>
+    <div class="edit-list rv">
+      <span>Private trial session before the day</span>
+      <span>HD makeup, hair &amp; draping by senior artists</span>
+      <span>Pre-bridal skin journey, planned weeks ahead</span>
+    </div>
+    <a href="https://wa.me/919903537941?text=Hello%20Srejoni%2C%20I%20would%20like%20to%20enquire%20about%20bridal%20makeup." target="_blank" rel="noopener" class="btn btn-gold rv">Enquire for Your Date</a>
+  </div>
+</div>
+
+<!-- ═════════ EDITORIAL: AROMATHERAPY ═════════ -->
+<div class="edit-row alt">
+  <div class="edit-img"><img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=1000&q=80&auto=format&fit=crop" alt="Aromatherapy candles and spa ritual" loading="lazy"></div>
+  <div class="edit-txt">
+    <span class="roman rv">III &nbsp;·&nbsp; The Signature Ritual</span>
+    <h2 class="display rv">An hour that<br>feels like a <em>holiday</em></h2>
+    <p class="rv">Aromatherapy is in our name for a reason. Essential oils, dim light, warm hands and silence — our clients say they forget the city outside exists.</p>
+    <div class="edit-list rv">
+      <span>Pure essential oil blends</span>
+      <span>Ladies-only, completely private rooms</span>
+      <span>Fresh linen &amp; sanitized tools, every guest</span>
+    </div>
+    <a href="#reserve" class="btn btn-ghost rv">Reserve a Ritual</a>
+  </div>
+</div>
+
+<!-- ═════════ QUOTE / TESTIMONIALS ═════════ -->
+<section class="quote-sec">
+  <span class="ornament rv">❝</span>
+  <!-- NOTE FOR SETUP: replace these sample quotes with real reviews from the salon's Google profile before going live -->
+  <div class="quote-slide rv" id="quoteSlide">
+    <blockquote id="qText">The aromatherapy spa was heavenly — I fell asleep. The staff are so warm, and the salon is spotlessly clean.</blockquote>
+    <div class="attr" id="qAttr">Verified Client &nbsp;·&nbsp; <b>Google Review</b></div>
+  </div>
+  <div class="q-dots" id="qDots">
+    <button class="q-dot on" aria-label="Review 1"></button>
+    <button class="q-dot" aria-label="Review 2"></button>
+    <button class="q-dot" aria-label="Review 3"></button>
+  </div>
+  <div class="q-google rv"><span class="st">★★★★★</span> &nbsp;4.9 from 367+ Google Reviews</div>
+</section>
+
+<!-- ═════════ GALLERY ═════════ -->
+<div class="gallery" id="gallery">
+  <!-- NOTE FOR SETUP: replace stock photos with real salon photos before going live -->
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=75&auto=format&fit=crop" alt="Hair studio" loading="lazy"><span>The Hair Studio</span></div>
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=75&auto=format&fit=crop" alt="Spa ritual" loading="lazy"><span>Spa Rituals</span></div>
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=700&q=75&auto=format&fit=crop" alt="Makeup artistry" loading="lazy"><span>Makeup Artistry</span></div>
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=75&auto=format&fit=crop" alt="Nail lounge" loading="lazy"><span>The Nail Lounge</span></div>
+</div>
+
+<!-- ═════════ RESERVE ═════════ -->
+<section class="reserve" id="reserve">
+  <div class="reserve-in">
+    <div>
+      <div class="kicker rv">IV &nbsp;·&nbsp; Reservations</div>
+      <h2 class="display rv">Reserve your<br><em>me-time</em></h2>
+      <p class="r-sub rv">Share a few details and your request arrives directly on our WhatsApp. We confirm personally, usually within minutes — no advance payment.</p>
+      <dl class="r-details rv">
+        <div><dt>Telephone</dt><dd><a href="tel:+919903537941">099035 37941</a></dd></div>
+        <div><dt>Address</dt><dd>BK-261, Salt Lake Bypass<small>Near 9 No. Water Tank, opp. ICICI Bank — Kolkata 700091</small></dd></div>
+        <div><dt>Hours</dt><dd>Open daily, from 10:00 AM</dd></div>
+        <div><dt>House Note</dt><dd>Ladies only — walk-ins welcome, reservations never wait</dd></div>
+      </dl>
+    </div>
+    <form class="r-form rv" id="bookForm">
+      <div class="rf-row">
+        <div class="rfield"><label>Your Name</label><input type="text" id="bName" placeholder="Priya Sharma" required></div>
+        <div class="rfield"><label>Phone</label><input type="tel" id="bPhone" placeholder="98300 12345" required></div>
+      </div>
+      <div class="rf-row">
+        <div class="rfield"><label>Ritual</label>
+          <select id="bService">
+            <option>Bridal Makeup</option><option>Party / Reception Makeup</option>
+            <option>Pre-Bridal Package</option><option>Signature Glow Facial</option>
+            <option>De-Tan / Clean-Up</option><option>Hair Cut &amp; Styling</option>
+            <option>Colour / Highlights</option><option>Keratin / Smoothening</option>
+            <option>Hair Spa</option><option>Aromatherapy Ritual</option>
+            <option>Manicure / Pedicure</option><option>Nail Art</option>
+            <option>Waxing / Threading</option><option>Body Polishing</option><option>Other</option>
+          </select>
+        </div>
+        <div class="rfield"><label>Preferred Date</label><input type="date" id="bDate"></div>
+      </div>
+      <div class="rfield"><label>A note, if you wish</label><textarea id="bMsg" rows="2" placeholder="Occasion, preferences, questions…"></textarea></div>
+      <button type="submit" class="btn btn-wa" style="width:100%">Send Reservation via WhatsApp</button>
+      <p class="r-note">Your details open in WhatsApp, pre-written — simply press send.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ═════════ FAQ ═════════ -->
+<section class="faq">
+  <div class="faq-in">
+    <div class="head rv">
+      <div class="kicker centered">V &nbsp;·&nbsp; Good to Know</div>
+      <h2 class="display">Questions, <em>answered</em></h2>
+    </div>
+    <details class="faq-item rv"><summary>Is Srejoni truly ladies-only?</summary><div class="faq-a">Entirely. Our whole team is female and gentlemen are not seated — so you can be completely at ease, always.</div></details>
+    <details class="faq-item rv"><summary>How early should I reserve bridal makeup?</summary><div class="faq-a">Three to four weeks ahead in wedding season, earlier for popular dates. Your reservation includes a private trial so the look is decided long before the day.</div></details>
+    <details class="faq-item rv"><summary>What are your rates?</summary><div class="faq-a">Honest and reasonable — it's why clients have stayed with us for fifteen years. Message us on WhatsApp and the full rate card arrives in minutes.</div></details>
+    <details class="faq-item rv"><summary>Which products do you use?</summary><div class="faq-a">Trusted professional brands only, chosen for skin and hair safety. Sensitive skin or allergies? Tell us and your ritual is customised.</div></details>
+    <details class="faq-item rv"><summary>Do I need a reservation, or may I walk in?</summary><div class="faq-a">Walk-ins are always welcome. A WhatsApp reservation simply means your chair is waiting — especially on weekends.</div></details>
+  </div>
+</section>
+
+<!-- ═════════ VISIT ═════════ -->
+<section class="visit" id="visit">
+  <div class="visit-in">
+    <div>
+      <div class="kicker rv">VI &nbsp;·&nbsp; Visit</div>
+      <h2 class="display rv">Find your way<br>to <em>Srejoni</em></h2>
+      <dl class="v-lines rv">
+        <div><dt>Address</dt><dd>BK-261, Salt Lake Bypass, Sector II<small>Near 9 No. Water Tank · Opposite ICICI Bank · Kolkata 700091</small></dd></div>
+        <div><dt>Telephone</dt><dd>099035 37941</dd></div>
+        <div><dt>Hours</dt><dd>Open daily from 10:00 AM<small>WhatsApp us to confirm today's schedule</small></dd></div>
+      </dl>
+    </div>
+    <div class="map-box rv">
+      <iframe src="https://www.google.com/maps?q=Srejoni+Spa+Aromatherapy+BK-261+Salt+Lake+Kolkata&output=embed" loading="lazy" title="Srejoni location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer>
+  <span class="f-mono">✦</span>
+  <div class="f-name">Srejoni</div>
+  <div class="f-tag">Spa &amp; Aromatherapy · Est. 2008</div>
+  <div class="f-links">
+    <a href="#menu">The Menu</a>
+    <a href="#bridal">Bridal</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reserve">Reserve</a>
+    <a href="tel:+919903537941">Call</a>
+    <a href="https://wa.me/919903537941" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="f-bottom">© 2026 Srejoni Spa &amp; Aromatherapy — website crafted by <b>Pratyush Web Design</b></div>
+</footer>
+
+<!-- ═════════ FLOATING WHATSAPP ═════════ -->
+<a class="wa-float" href="https://wa.me/919903537941?text=Hello%20Srejoni%2C%20I%20would%20like%20to%20reserve%20an%20appointment." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2-2-4.4-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.5c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<!-- ═════════ CONCIERGE ═════════ -->
+<button class="bot-float" id="botBtn" aria-label="Open concierge chat">✦</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="bot-av">S</div>
+    <div><b>Srejoni Concierge</b><small>Rituals · Rates · Reservations</small></div>
+    <button class="chat-close" id="chatClose">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input">
+    <input type="text" id="chatText" placeholder="Ask us anything…" autocomplete="off">
+    <button id="chatSend" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<script>
+/* ═════════ CONFIG — change number & salon info here ═════════ */
+const WA_NUMBER = "919903537941";
+const SALON = {
+  name: "Srejoni Spa & Aromatherapy",
+  address: "BK-261, Salt Lake Bypass, near 9 No. Water Tank (opposite ICICI Bank), Kolkata 700091",
+  phone: "099035 37941",
+  hours: "Open daily from 10:00 AM"
+};
+
+/* ═════════ NAV SCROLL STATE ═════════ */
+const nav = document.getElementById("nav");
+function navState(){ nav.classList.toggle("scrolled", window.scrollY > 60); }
+
+/* ═════════ SCROLL REVEAL (robust — no IntersectionObserver dependency) ═════════ */
+const rvEls = Array.from(document.querySelectorAll(".rv"));
+function inView(el, margin){
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight * (margin || .93) && r.bottom > 0;
+}
+function checkReveal(){
+  navState();
+  rvEls.forEach(el => { if(!el.classList.contains("in") && inView(el)) el.classList.add("in"); });
+}
+window.addEventListener("scroll", checkReveal, {passive: true});
+window.addEventListener("resize", checkReveal, {passive: true});
+window.addEventListener("load", checkReveal);
+checkReveal();
+setTimeout(() => rvEls.forEach(el => el.classList.add("in")), 4000); // safety net
+
+/* ═════════ MOBILE MENU — close after tapping a link ═════════ */
+const navLinksBox = document.getElementById("navLinks");
+navLinksBox.querySelectorAll("a").forEach(a =>
+  a.addEventListener("click", () => navLinksBox.classList.remove("open"))
+);
+
+/* ═════════ TESTIMONIAL ROTATION ═════════ */
+const QUOTES = [
+  ["The aromatherapy spa was heavenly — I fell asleep. The staff are so warm, and the salon is spotlessly clean.", "Verified Client"],
+  ["They did my bridal makeup and I could not stop smiling in every photograph. Fifteen years of experience truly shows.", "Verified Bride"],
+  ["My regular place for facials and hair spa for years now. Honest prices, and they genuinely care about your skin.", "Verified Client"]
+];
+let qi = 0, qTimer = null;
+const qText = document.getElementById("qText");
+const qAttr = document.getElementById("qAttr");
+const qDots = Array.from(document.querySelectorAll(".q-dot"));
+function showQuote(i){
+  qi = i;
+  qText.style.opacity = 0;
+  setTimeout(() => {
+    qText.textContent = QUOTES[i][0];
+    qAttr.innerHTML = QUOTES[i][1] + " &nbsp;·&nbsp; <b>Google Review</b>";
+    qText.style.opacity = 1;
+  }, 400);
+  qDots.forEach((d, j) => d.classList.toggle("on", j === i));
+}
+qDots.forEach((d, j) => d.addEventListener("click", () => { showQuote(j); restartQ(); }));
+function restartQ(){
+  clearInterval(qTimer);
+  qTimer = setInterval(() => showQuote((qi + 1) % QUOTES.length), 6000);
+}
+restartQ();
+
+/* ═════════ RESERVATION FORM → WHATSAPP ═════════ */
+document.getElementById("bookForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = document.getElementById("bName").value.trim();
+  const phone = document.getElementById("bPhone").value.trim();
+  const service = document.getElementById("bService").value;
+  const date = document.getElementById("bDate").value || "Any day";
+  const msg = document.getElementById("bMsg").value.trim();
+  const text =
+`✦ *New Reservation — Srejoni*
+Name: ${name}
+Phone: ${phone}
+Ritual: ${service}
+Preferred Date: ${date}` + (msg ? `\nNote: ${msg}` : "");
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
+});
+
+/* ═════════ CONCIERGE CHAT ═════════ */
+const botBtn = document.getElementById("botBtn");
+const panel = document.getElementById("chatPanel");
+const body = document.getElementById("chatBody");
+const input = document.getElementById("chatText");
+const sendBtn = document.getElementById("chatSend");
+
+const QUICK = ["Bridal","Facials","Hair","Aromatherapy","Rates","Hours","Location","Reserve"];
+
+const BRAIN = [
+  {k:["bridal","bride","wedding","biye","shaadi","reception","engagement"],
+   a:"Congratulations. ✦\n\nOur Bridal Atelier includes HD bridal makeup with hair and draping, a private trial session before the day, and pre-bridal skin journeys planned weeks ahead.\n\nWedding dates fill quickly — we suggest reserving 3–4 weeks in advance. Shall I connect you on WhatsApp for your date?"},
+  {k:["facial","glow","skin","pimple","tan","de-tan","detan","clean-up","cleanup","dull"],
+   a:"Our Signature Glow Facial is the house favourite — deep cleansing and radiance for every skin type. For sun-tired skin, the De-Tan ritual works beautifully before any occasion.\n\nWould you like to reserve one?"},
+  {k:["hair","haircut","cut","colour","color","highlight","keratin","smoothening","smoothing","straighten","hair spa","hairfall","hair fall","frizzy"],
+   a:"The Hair Studio offers precision cuts, global colour and highlights, keratin and smoothening, and a deeply nourishing hair spa.\n\nFor frizzy or tired hair, our stylist will recommend the right ritual after a quick look. Shall we reserve a consultation?"},
+  {k:["spa","massage","aromatherapy","aroma","relax","stress","tired","body"],
+   a:"The Srejoni Aromatherapy Ritual is our namesake — pure essential oils, dim light and warm hands in a completely private room. Clients tell us they forget the city exists.\n\nReady to reserve an hour that feels like a holiday?"},
+  {k:["wax","threading","thread","hair removal","eyebrow","upper lip"],
+   a:"Of course — gentle full-body waxing, threading and brow shaping, always hygienic and always in complete ladies-only privacy.\n\nWalk-ins are welcome, though a reservation means no waiting. Shall I arrange one?"},
+  {k:["nail","manicure","pedicure","mani","pedi","gel"],
+   a:"The Nail Lounge offers luxury manicure and pedicure, gel nails and nail art — from quiet French tips to statement looks.\n\nA session is about an hour of pure care. Shall we book your seat?"},
+  {k:["price","cost","rate","fee","charge","kitna","koto","much","package"],
+   a:"Our rates are honest and reasonable — one reason clients have stayed with us for fifteen years. Packages offer the best value.\n\nMessage us on WhatsApp and the full rate card arrives in minutes. Shall I connect you?"},
+  {k:["time","timing","open","hour","kobe","when","close","sunday","today"],
+   a:SALON.hours + ", every day.\n\nWeekends fill quickly — a WhatsApp reservation means your chair is waiting. Would you like the link?"},
+  {k:["location","address","where","kothay","kahan","direction","reach","water tank","icici"],
+   a:"You will find us at " + SALON.address + ".\n\nThere is a map in the Visit section below, or ask us on WhatsApp and we will guide you."},
+  {k:["ladies","gents","men","male","husband","boy"],
+   a:"Srejoni is entirely ladies-only — our whole team is female and gentlemen are not seated. Complete privacy, complete ease."},
+  {k:["home service","home","house"],
+   a:"For bridal and special occasions, home service may be arranged depending on the date. Message us on WhatsApp with your requirement and we will confirm."},
+  {k:["product","brand","allergy","sensitive"],
+   a:"We use trusted professional brands only, chosen for skin and hair safety. If you have allergies or sensitive skin, tell us — your ritual will be customised."},
+  {k:["book","appointment","reserve","slot","schedule"],
+   a:"With pleasure. Two simple ways:\n\n1. The reservation form on this page — your request arrives on our WhatsApp\n2. Or message us directly on WhatsApp\n\nWe confirm personally, usually within minutes."},
+  {k:["hi","hello","hey","namaskar","namaste","nomoshkar"],
+   a:"Welcome to Srejoni. ✦ I can help with our rituals, rates, bridal reservations and hours — ask away, or choose a topic below."},
+  {k:["thank","dhonnobad","thanks"],
+   a:"The pleasure is ours. We look forward to welcoming you to Srejoni. ✦"}
+];
+
+const FALLBACK = "Forgive me — that one is beyond your concierge. Our team will answer personally on WhatsApp (tap the green button), or call " + SALON.phone + ".";
+
+function addMsg(text, who){
+  const d = document.createElement("div");
+  d.className = "msg " + who;
+  d.textContent = text;
+  body.appendChild(d);
+  body.scrollTop = body.scrollHeight;
+}
+function addChips(){
+  const c = document.createElement("div");
+  c.className = "chips";
+  QUICK.forEach(q => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = q;
+    b.onclick = () => { handleUser(q); };
+    c.appendChild(b);
+  });
+  body.appendChild(c);
+  body.scrollTop = body.scrollHeight;
+}
+function botReply(text){
+  const t = document.createElement("div");
+  t.className = "msg bot typing";
+  t.innerHTML = "<span></span><span></span><span></span>";
+  body.appendChild(t);
+  body.scrollTop = body.scrollHeight;
+  setTimeout(() => { t.remove(); addMsg(text, "bot"); }, 700 + Math.random()*500);
+}
+function handleUser(text){
+  if(!text.trim()) return;
+  addMsg(text, "user");
+  input.value = "";
+  const low = text.toLowerCase();
+  const hit = BRAIN.find(item => item.k.some(kw => low.includes(kw)));
+  botReply(hit ? hit.a : FALLBACK);
+}
+botBtn.addEventListener("click", () => {
+  panel.classList.toggle("open");
+  if(panel.classList.contains("open") && body.children.length === 0){
+    botReply("Welcome to Srejoni. ✦\n\nI am your concierge — ask about our rituals, bridal reservations, rates or hours, or choose a topic below.");
+    setTimeout(addChips, 1400);
+  }
+});
+document.getElementById("chatClose").addEventListener("click", () => panel.classList.remove("open"));
+sendBtn.addEventListener("click", () => handleUser(input.value));
+input.addEventListener("keydown", e => { if(e.key === "Enter") handleUser(input.value); });
+</script>
+</body>
+</html>

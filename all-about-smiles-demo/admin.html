@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Manager — All About Smiles</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#073f3e; --teal:#0d6e6e; --aqua:#14b8a6; --aqua-soft:#d9f4f0;
+    --gold:#e8b923; --ink:#10262b; --grey:#54696e; --cream:#f4faf9; --white:#fff;
+    --amber:#f59e0b; --amber-bg:#fef3d8;
+    --green:#16a34a; --green-bg:#dcf5e5;
+    --red:#dc2626; --red-bg:#fde8e8;
+    --slate:#64748b; --slate-bg:#e9eef3;
+    --wa:#25d366;
+    --shadow-md:0 10px 30px -8px rgba(7,63,62,.14);
+    --shadow-sm:0 3px 12px rgba(7,63,62,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;min-height:100vh}
+  button{font-family:inherit;cursor:pointer}
+  input,select,textarea{font-family:inherit}
+
+  /* ── LOCK SCREEN ── */
+  .lock{position:fixed;inset:0;z-index:2000;background:linear-gradient(150deg,var(--deep),#0a5654);display:flex;align-items:center;justify-content:center;padding:20px}
+  .lock-card{background:#fff;border-radius:26px;padding:44px 38px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .lock-card .l-ico{width:72px;height:72px;border-radius:22px;background:linear-gradient(135deg,var(--aqua),var(--teal));display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 18px;box-shadow:0 12px 26px -6px rgba(20,184,166,.5)}
+  .lock-card h1{font-size:21px;margin-bottom:4px}
+  .lock-card p{font-size:13.5px;color:var(--grey);margin-bottom:24px}
+  .lock-card input{width:100%;padding:15px;border:1.5px solid #dfeae8;border-radius:14px;font-size:22px;text-align:center;letter-spacing:12px;margin-bottom:14px}
+  .lock-card input:focus{outline:none;border-color:var(--aqua);box-shadow:0 0 0 3.5px rgba(20,184,166,.14)}
+  .lock-card button{width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--aqua),var(--teal));color:#fff;font-size:15.5px;font-weight:600}
+  .lock-err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
+  .lock-hint{margin-top:16px;font-size:12px;color:var(--grey);background:var(--cream);border-radius:10px;padding:9px}
+
+  /* ── HEADER ── */
+  header{background:linear-gradient(120deg,var(--deep),var(--teal));color:#fff;padding:22px 20px}
+  .head-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .head-brand{display:flex;align-items:center;gap:13px}
+  .head-brand .hb-ico{width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:24px}
+  .head-brand b{font-size:18px;display:block;line-height:1.25}
+  .head-brand small{font-size:12px;opacity:.8}
+  .head-date{font-size:13px;opacity:.9;text-align:right}
+  .head-date b{font-size:15px;display:block}
+
+  .shell{max-width:1080px;margin:0 auto;padding:26px 20px 90px}
+
+  /* ── STATS ── */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:#fff;border-radius:18px;padding:20px 22px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:15px;border-left:5px solid var(--aqua)}
+  .stat.s-amber{border-left-color:var(--amber)}
+  .stat.s-green{border-left-color:var(--green)}
+  .stat.s-gold{border-left-color:var(--gold)}
+  .stat .st-ico{font-size:26px}
+  .stat b{font-size:26px;display:block;line-height:1.15}
+  .stat span{font-size:12px;color:var(--grey)}
+
+  /* ── TOOLBAR ── */
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+  .tabs{display:flex;background:#fff;border-radius:50px;padding:5px;box-shadow:var(--shadow-sm);gap:2px;flex-wrap:wrap}
+  .tab{border:none;background:none;padding:9px 20px;border-radius:50px;font-size:13.5px;font-weight:600;color:var(--grey);transition:.2s}
+  .tab.active{background:linear-gradient(135deg,var(--aqua),var(--teal));color:#fff;box-shadow:0 6px 14px -4px rgba(20,184,166,.5)}
+  .search-box{flex:1;min-width:180px;position:relative}
+  .search-box input{width:100%;padding:12px 16px 12px 42px;border:1.5px solid #dfeae8;border-radius:50px;font-size:14px;background:#fff}
+  .search-box input:focus{outline:none;border-color:var(--aqua)}
+  .search-box::before{content:"🔍";position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:14px}
+  .btn-add{border:none;background:linear-gradient(135deg,var(--gold),#d9a406);color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;box-shadow:0 8px 18px -4px rgba(232,185,35,.55);transition:.2s;display:inline-flex;gap:8px;align-items:center}
+  .btn-add:hover{transform:translateY(-2px)}
+
+  /* ── DATE GROUPS ── */
+  .dgroup{margin-bottom:26px}
+  .dhead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .dhead .d-label{font-size:15px;font-weight:700}
+  .dhead .d-label.today{color:var(--teal)}
+  .dhead .d-count{background:var(--aqua-soft);color:var(--teal);font-size:11.5px;font-weight:700;padding:3px 12px;border-radius:40px}
+  .dhead .d-line{flex:1;height:1.5px;background:#e2edeb;border-radius:2px}
+
+  /* ── APPOINTMENT CARD ── */
+  .apt{background:#fff;border-radius:16px;box-shadow:var(--shadow-sm);padding:16px 18px;margin-bottom:12px;display:grid;grid-template-columns:86px 1fr auto;gap:16px;align-items:center;transition:.2s;border:1.5px solid transparent}
+  .apt:hover{box-shadow:var(--shadow-md);border-color:rgba(20,184,166,.25)}
+  .apt.done-look{opacity:.62}
+  .apt-time{text-align:center;background:var(--cream);border-radius:13px;padding:10px 6px}
+  .apt-time b{font-size:17px;display:block;line-height:1.2;color:var(--teal)}
+  .apt-time small{font-size:10.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.5px}
+  .apt-mid{min-width:0}
+  .apt-name{font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .badge{font-size:10.5px;font-weight:700;padding:3px 11px;border-radius:40px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}
+  .b-pending{background:var(--amber-bg);color:#92610a}
+  .b-confirmed{background:var(--aqua-soft);color:var(--teal)}
+  .b-completed{background:var(--green-bg);color:var(--green)}
+  .b-cancelled{background:var(--red-bg);color:var(--red)}
+  .apt-info{font-size:13px;color:var(--grey);margin-top:3px;display:flex;gap:14px;flex-wrap:wrap}
+  .apt-info span{display:inline-flex;gap:5px;align-items:center}
+  .apt-note{font-size:12.5px;color:var(--grey);background:var(--cream);border-radius:9px;padding:6px 11px;margin-top:8px;display:inline-block}
+  .apt-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+  .act{border:none;width:38px;height:38px;border-radius:12px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.18s;background:var(--cream)}
+  .act:hover{transform:translateY(-2px)}
+  .act.a-wa{background:#e3f9ec}
+  .act.a-call{background:var(--aqua-soft)}
+  .act.a-ok{background:var(--green-bg)}
+  .act.a-x{background:var(--red-bg)}
+  .act.a-edit{background:var(--slate-bg)}
+  @media(max-width:640px){
+    .apt{grid-template-columns:70px 1fr}
+    .apt-actions{grid-column:1 / -1;justify-content:flex-start;border-top:1px dashed #e2edeb;padding-top:11px}
+  }
+
+  .empty{background:#fff;border-radius:18px;padding:54px 24px;text-align:center;box-shadow:var(--shadow-sm)}
+  .empty .e-ico{font-size:52px;margin-bottom:12px}
+  .empty b{font-size:17px;display:block;margin-bottom:6px}
+  .empty p{font-size:13.5px;color:var(--grey)}
+
+  /* ── MODAL ── */
+  .modal-bg{position:fixed;inset:0;z-index:1500;background:rgba(7,38,43,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{background:#fff;border-radius:24px;padding:34px;max-width:520px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .modal h2{font-size:20px;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+  .field label{display:block;font-size:12.5px;font-weight:600;margin-bottom:6px;color:var(--deep)}
+  .field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1.5px solid #dfeae8;border-radius:12px;font-size:14.5px;background:#fafdfc}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--aqua);box-shadow:0 0 0 3.5px rgba(20,184,166,.14)}
+  .modal-btns{display:flex;gap:12px;margin-top:22px}
+  .modal-btns button{flex:1;padding:14px;border:none;border-radius:13px;font-size:15px;font-weight:600}
+  .m-save{background:linear-gradient(135deg,var(--aqua),var(--teal));color:#fff}
+  .m-cancel{background:var(--slate-bg);color:var(--ink)}
+
+  /* ── FOOTER BAR ── */
+  .foot-tools{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1.5px solid #e2edeb;padding:11px 20px;z-index:800}
+  .ft-in{max-width:1080px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .ft-in .ft-left{display:flex;gap:10px;flex-wrap:wrap}
+  .ft-btn{border:1.5px solid #dfeae8;background:#fff;padding:8px 16px;border-radius:40px;font-size:12.5px;font-weight:600;color:var(--grey);transition:.2s}
+  .ft-btn:hover{border-color:var(--aqua);color:var(--teal)}
+  .ft-note{font-size:11.5px;color:var(--grey)}
+
+  .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);z-index:2500;background:var(--deep);color:#fff;padding:13px 26px;border-radius:50px;font-size:14px;font-weight:600;box-shadow:0 14px 34px rgba(0,0,0,.3);transition:.35s;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOCK SCREEN ═══════ -->
+<div class="lock" id="lockScreen">
+  <div class="lock-card">
+    <div class="l-ico">🔐</div>
+    <h1>All About Smiles</h1>
+    <p>Appointment Manager — staff only</p>
+    <input type="password" id="pinInput" maxlength="4" inputmode="numeric" placeholder="••••" autocomplete="off">
+    <button onclick="tryUnlock()">Unlock Dashboard</button>
+    <div class="lock-err" id="lockErr"></div>
+    <div class="lock-hint">🔑 Demo PIN: <b>1234</b> &nbsp;·&nbsp; (changed for the clinic before delivery)</div>
+  </div>
+</div>
+
+<!-- ═══════ HEADER ═══════ -->
+<header>
+  <div class="head-in">
+    <div class="head-brand">
+      <span class="hb-ico">🦷</span>
+      <span><b>All About Smiles</b><small>Appointment Manager</small></span>
+    </div>
+    <div class="head-date"><small>Today</small><b id="todayLabel"></b></div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- ═══════ STATS ═══════ -->
+  <div class="stats">
+    <div class="stat"><span class="st-ico">📅</span><span><b id="stToday">0</b><span>Appointments Today</span></span></div>
+    <div class="stat s-gold"><span class="st-ico">📆</span><span><b id="stWeek">0</b><span>Upcoming (7 days)</span></span></div>
+    <div class="stat s-amber"><span class="st-ico">⏳</span><span><b id="stPending">0</b><span>Waiting to Confirm</span></span></div>
+    <div class="stat s-green"><span class="st-ico">✅</span><span><b id="stDone">0</b><span>Total Completed</span></span></div>
+  </div>
+
+  <!-- ═══════ TOOLBAR ═══════ -->
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-view="today">Today</button>
+      <button class="tab" data-view="upcoming">Upcoming</button>
+      <button class="tab" data-view="past">Past</button>
+      <button class="tab" data-view="all">All</button>
+    </div>
+    <div class="search-box"><input type="text" id="searchInput" placeholder="Search name or phone..."></div>
+    <button class="btn-add" onclick="openModal()">➕ New Appointment</button>
+  </div>
+
+  <!-- ═══════ LIST ═══════ -->
+  <div id="listArea"></div>
+</div>
+
+<!-- ═══════ ADD/EDIT MODAL ═══════ -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2 id="modalTitle">➕ New Appointment</h2>
+    <form id="aptForm">
+      <input type="hidden" id="fId">
+      <div class="form-row">
+        <div class="field"><label>Patient Name *</label><input type="text" id="fName" required placeholder="e.g. Rahul Sen"></div>
+        <div class="field"><label>Phone Number *</label><input type="tel" id="fPhone" required placeholder="e.g. 9830012345"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Date *</label><input type="date" id="fDate" required></div>
+        <div class="field"><label>Time *</label><input type="time" id="fTime" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Treatment</label>
+          <select id="fService">
+            <option>General Checkup</option><option>Tooth Pain / Emergency</option>
+            <option>Root Canal</option><option>Braces / Aligners</option>
+            <option>Teeth Whitening</option><option>Smile Designing / Veneers</option>
+            <option>Dental Implant</option><option>Kids Dentistry</option>
+            <option>Cleaning / Scaling</option><option>Wisdom Tooth</option>
+            <option>Dentures</option><option>Cavity Filling</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Status</label>
+          <select id="fStatus">
+            <option value="pending">⏳ Pending</option>
+            <option value="confirmed">✅ Confirmed</option>
+            <option value="completed">✔️ Completed</option>
+            <option value="cancelled">✖️ Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Note (optional)</label><textarea id="fNote" rows="2" placeholder="e.g. Patient has diabetes / follow-up visit / sensitive to anesthesia"></textarea></div>
+      <div class="modal-btns">
+        <button type="button" class="m-cancel" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="m-save">💾 Save Appointment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════ FOOTER TOOLS ═══════ -->
+<div class="foot-tools">
+  <div class="ft-in">
+    <div class="ft-left">
+      <button class="ft-btn" onclick="exportCSV()">📊 Export Excel (CSV)</button>
+      <button class="ft-btn" onclick="backupJSON()">💾 Backup</button>
+      <button class="ft-btn" onclick="document.getElementById('restoreFile').click()">📂 Restore</button>
+      <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreJSON(this)">
+      <button class="ft-btn" onclick="resetDemo()">🔄 Load Demo Data</button>
+    </div>
+    <span class="ft-note">💡 Data is saved on this device — take a Backup every week</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════ CONFIG ═══════ */
+const PIN = "1234";                 // change before delivering to the clinic
+const STORE_KEY = "aas_appointments";
+const CLINIC_NAME = "All About Smiles";
+
+/* ═══════ LOCK ═══════ */
+function tryUnlock(){
+  const v = document.getElementById("pinInput").value;
+  if(v === PIN){
+    sessionStorage.setItem("aas_unlocked","1");
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    document.getElementById("lockErr").textContent = "Wrong PIN — try again";
+    document.getElementById("pinInput").value = "";
+  }
+}
+document.getElementById("pinInput").addEventListener("keydown", e => { if(e.key === "Enter") tryUnlock(); });
+if(sessionStorage.getItem("aas_unlocked") === "1") document.getElementById("lockScreen").style.display = "none";
+
+/* ═══════ DATA ═══════ */
+function load(){ try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch(e){ return []; } }
+function save(list){ localStorage.setItem(STORE_KEY, JSON.stringify(list)); }
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+function todayStr(offset){
+  const d = new Date();
+  d.setDate(d.getDate() + (offset || 0));
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function seedDemo(){
+  const demo = [
+    {id:uid(), name:"Rahul Sen",        phone:"9830011111", service:"Root Canal",          date:todayStr(0),  time:"11:00", status:"confirmed", note:"2nd sitting"},
+    {id:uid(), name:"Priya Sharma",     phone:"9830022222", service:"Teeth Whitening",     date:todayStr(0),  time:"12:30", status:"pending",   note:""},
+    {id:uid(), name:"Amit Dutta",       phone:"9830033333", service:"Tooth Pain / Emergency", date:todayStr(0), time:"17:00", status:"confirmed", note:"Severe pain since yesterday"},
+    {id:uid(), name:"Sneha Bose",       phone:"9830044444", service:"Braces / Aligners",   date:todayStr(1),  time:"11:30", status:"pending",   note:"First consultation"},
+    {id:uid(), name:"Arjun Ghosh",      phone:"9830055555", service:"Kids Dentistry",      date:todayStr(1),  time:"16:00", status:"confirmed", note:"Age 7, first visit — nervous"},
+    {id:uid(), name:"Mita Chatterjee",  phone:"9830066666", service:"Dental Implant",      date:todayStr(3),  time:"12:00", status:"pending",   note:""},
+    {id:uid(), name:"Suresh Kumar",     phone:"9830077777", service:"Cleaning / Scaling",  date:todayStr(-1), time:"13:00", status:"completed", note:""},
+    {id:uid(), name:"Anjali Roy",       phone:"9830088888", service:"Cavity Filling",      date:todayStr(-2), time:"15:30", status:"completed", note:"Two fillings done"}
+  ];
+  save(demo);
+  return demo;
+}
+let appointments = load();
+if(appointments.length === 0) appointments = seedDemo();
+
+/* ═══════ HELPERS ═══════ */
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function fmtDate(iso){
+  const [y,m,d] = iso.split("-").map(Number);
+  const dt = new Date(y, m-1, d);
+  return DAYS[dt.getDay()] + ", " + d + " " + MONTHS[m-1] + " " + y;
+}
+function dateTag(iso){
+  if(iso === todayStr(0)) return "Today";
+  if(iso === todayStr(1)) return "Tomorrow";
+  if(iso === todayStr(-1)) return "Yesterday";
+  return "";
+}
+function fmtTime(t){
+  let [h,m] = t.split(":").map(Number);
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+  return h + ":" + String(m).padStart(2,"0") + " " + ap;
+}
+function cleanPhone(p){
+  let d = p.replace(/\D/g,"");
+  if(d.length === 10) d = "91" + d;
+  return d;
+}
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+/* ═══════ STATS ═══════ */
+function renderStats(){
+  const today = todayStr(0), week = todayStr(7);
+  document.getElementById("stToday").textContent   = appointments.filter(a => a.date === today && a.status !== "cancelled").length;
+  document.getElementById("stWeek").textContent    = appointments.filter(a => a.date > today && a.date <= week && a.status !== "cancelled").length;
+  document.getElementById("stPending").textContent = appointments.filter(a => a.status === "pending" && a.date >= today).length;
+  document.getElementById("stDone").textContent    = appointments.filter(a => a.status === "completed").length;
+}
+
+/* ═══════ LIST RENDER ═══════ */
+let view = "today", query = "";
+const BADGE = {pending:["b-pending","⏳ Pending"], confirmed:["b-confirmed","✅ Confirmed"], completed:["b-completed","✔ Completed"], cancelled:["b-cancelled","✖ Cancelled"]};
+
+function filtered(){
+  const today = todayStr(0);
+  let list = appointments.slice();
+  if(view === "today")    list = list.filter(a => a.date === today);
+  if(view === "upcoming") list = list.filter(a => a.date > today);
+  if(view === "past")     list = list.filter(a => a.date < today);
+  if(query) list = list.filter(a => (a.name + " " + a.phone).toLowerCase().includes(query));
+  list.sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time));
+  if(view === "past") list.reverse();
+  return list;
+}
+
+function render(){
+  renderStats();
+  const area = document.getElementById("listArea");
+  const list = filtered();
+  if(list.length === 0){
+    const msgs = {
+      today:["🌤️","No appointments today","Enjoy the free time — or tap ➕ New Appointment to add one."],
+      upcoming:["📆","Nothing scheduled ahead","New WhatsApp bookings can be added with the ➕ button."],
+      past:["🗂️","No past records","Completed and old appointments will appear here."],
+      all:["📋","No appointments yet","Tap ➕ New Appointment to add your first one."]
+    };
+    const m = msgs[view];
+    area.innerHTML = '<div class="empty"><div class="e-ico">' + m[0] + '</div><b>' + m[1] + '</b><p>' + m[2] + '</p></div>';
+    return;
+  }
+  // group by date
+  const groups = {};
+  list.forEach(a => { (groups[a.date] = groups[a.date] || []).push(a); });
+  let html = "";
+  Object.keys(groups).forEach(date => {
+    const tag = dateTag(date);
+    html += '<div class="dgroup"><div class="dhead">' +
+      '<span class="d-label' + (tag === "Today" ? " today" : "") + '">' + (tag ? tag + " · " : "") + fmtDate(date) + '</span>' +
+      '<span class="d-count">' + groups[date].length + ' patient' + (groups[date].length > 1 ? 's' : '') + '</span>' +
+      '<span class="d-line"></span></div>';
+    groups[date].forEach(a => {
+      const [bCls, bTxt] = BADGE[a.status];
+      const doneLook = (a.status === "completed" || a.status === "cancelled") ? " done-look" : "";
+      const waMsg = encodeURIComponent("Hello " + a.name + " 🙏 Your appointment at " + CLINIC_NAME + " is confirmed for " + fmtDate(a.date) + " at " + fmtTime(a.time) + ". Please arrive 10 minutes early. See you soon! 🦷");
+      html += '<div class="apt' + doneLook + '">' +
+        '<div class="apt-time"><b>' + fmtTime(a.time).split(" ")[0] + '</b><small>' + fmtTime(a.time).split(" ")[1] + '</small></div>' +
+        '<div class="apt-mid">' +
+          '<div class="apt-name">' + esc(a.name) + ' <span class="badge ' + bCls + '">' + bTxt + '</span></div>' +
+          '<div class="apt-info"><span>🩺 ' + esc(a.service) + '</span><span>📞 ' + esc(a.phone) + '</span></div>' +
+          (a.note ? '<div class="apt-note">📝 ' + esc(a.note) + '</div>' : '') +
+        '</div>' +
+        '<div class="apt-actions">' +
+          '<a class="act a-wa" title="Send WhatsApp confirmation" href="https://wa.me/' + cleanPhone(a.phone) + '?text=' + waMsg + '" target="_blank" rel="noopener">💬</a>' +
+          '<a class="act a-call" title="Call patient" href="tel:+' + cleanPhone(a.phone) + '">📞</a>' +
+          (a.status === "pending" ? '<button class="act a-ok" title="Mark Confirmed" onclick="setStatus(\'' + a.id + '\',\'confirmed\')">✅</button>' : '') +
+          (a.status !== "completed" && a.status !== "cancelled" ? '<button class="act a-ok" title="Mark Completed" onclick="setStatus(\'' + a.id + '\',\'completed\')">✔️</button>' : '') +
+          (a.status !== "cancelled" && a.status !== "completed" ? '<button class="act a-x" title="Cancel appointment" onclick="setStatus(\'' + a.id + '\',\'cancelled\')">✖️</button>' : '') +
+          '<button class="act a-edit" title="Edit" onclick="openModal(\'' + a.id + '\')">✏️</button>' +
+          '<button class="act a-x" title="Delete permanently" onclick="removeApt(\'' + a.id + '\')">🗑️</button>' +
+        '</div></div>';
+    });
+    html += '</div>';
+  });
+  area.innerHTML = html;
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* ═══════ ACTIONS ═══════ */
+function setStatus(id, st){
+  const a = appointments.find(x => x.id === id);
+  if(!a) return;
+  a.status = st;
+  save(appointments); render();
+  toast(st === "confirmed" ? "✅ Marked as confirmed" : st === "completed" ? "✔️ Marked as completed" : "✖️ Appointment cancelled");
+}
+function removeApt(id){
+  if(!confirm("Delete this appointment permanently?")) return;
+  appointments = appointments.filter(x => x.id !== id);
+  save(appointments); render();
+  toast("🗑️ Deleted");
+}
+
+/* ═══════ MODAL ═══════ */
+function openModal(id){
+  document.getElementById("modalBg").classList.add("open");
+  const f = document.getElementById("aptForm");
+  f.reset();
+  document.getElementById("fId").value = "";
+  document.getElementById("modalTitle").textContent = "➕ New Appointment";
+  document.getElementById("fDate").value = todayStr(0);
+  if(id){
+    const a = appointments.find(x => x.id === id);
+    if(a){
+      document.getElementById("modalTitle").textContent = "✏️ Edit Appointment";
+      document.getElementById("fId").value = a.id;
+      document.getElementById("fName").value = a.name;
+      document.getElementById("fPhone").value = a.phone;
+      document.getElementById("fDate").value = a.date;
+      document.getElementById("fTime").value = a.time;
+      document.getElementById("fService").value = a.service;
+      document.getElementById("fStatus").value = a.status;
+      document.getElementById("fNote").value = a.note || "";
+    }
+  }
+}
+function closeModal(){ document.getElementById("modalBg").classList.remove("open"); }
+document.getElementById("modalBg").addEventListener("click", e => { if(e.target.id === "modalBg") closeModal(); });
+
+document.getElementById("aptForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const id = document.getElementById("fId").value;
+  const data = {
+    name: document.getElementById("fName").value.trim(),
+    phone: document.getElementById("fPhone").value.trim(),
+    date: document.getElementById("fDate").value,
+    time: document.getElementById("fTime").value,
+    service: document.getElementById("fService").value,
+    status: document.getElementById("fStatus").value,
+    note: document.getElementById("fNote").value.trim()
+  };
+  if(id){
+    const a = appointments.find(x => x.id === id);
+    Object.assign(a, data);
+    toast("✏️ Appointment updated");
+  } else {
+    appointments.push(Object.assign({id: uid()}, data));
+    toast("✅ Appointment added");
+  }
+  save(appointments); closeModal(); render();
+});
+
+/* ═══════ TABS + SEARCH ═══════ */
+document.getElementById("tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if(!t) return;
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  view = t.dataset.view;
+  render();
+});
+document.getElementById("searchInput").addEventListener("input", e => {
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
+/* ═══════ EXPORT / BACKUP ═══════ */
+function download(name, content, type){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function exportCSV(){
+  let csv = "Date,Time,Patient,Phone,Treatment,Status,Note\n";
+  appointments.slice().sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time)).forEach(a => {
+    csv += [a.date, a.time, a.name, a.phone, a.service, a.status, (a.note || "").replace(/[,\n]/g," ")].map(v => '"' + v + '"').join(",") + "\n";
+  });
+  download("appointments-" + todayStr(0) + ".csv", csv, "text/csv");
+  toast("📊 Excel file downloaded");
+}
+function backupJSON(){
+  download("backup-appointments-" + todayStr(0) + ".json", JSON.stringify(appointments, null, 2), "application/json");
+  toast("💾 Backup downloaded — keep it safe!");
+}
+function restoreJSON(inp){
+  const file = inp.files[0];
+  if(!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if(!Array.isArray(data)) throw 0;
+      appointments = data;
+      save(appointments); render();
+      toast("📂 Backup restored — " + data.length + " appointments loaded");
+    } catch(e){ toast("⚠️ That file is not a valid backup"); }
+  };
+  r.readAsText(file);
+  inp.value = "";
+}
+function resetDemo(){
+  if(!confirm("Replace current data with fresh demo data?")) return;
+  appointments = seedDemo();
+  render();
+  toast("🔄 Demo data loaded");
+}
+
+/* ═══════ INIT ═══════ */
+document.getElementById("todayLabel").textContent = fmtDate(todayStr(0));
+render();
+</script>
+</body>
+</html>

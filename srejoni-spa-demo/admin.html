@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Manager — Srejoni Spa &amp; Aromatherapy</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#43152e; --wine:#632242; --rose:#b34570; --rose-soft:#fbe9f1;
+    --gold:#c9a227; --ink:#2e1422; --grey:#6d5560; --cream:#fbf5f2; --white:#fff;
+    --amber:#f59e0b; --amber-bg:#fef3d8;
+    --green:#16a34a; --green-bg:#dcf5e5;
+    --red:#dc2626; --red-bg:#fde8e8;
+    --slate:#64748b; --slate-bg:#efe9ec;
+    --wa:#25d366;
+    --shadow-md:0 10px 30px -8px rgba(67,21,46,.16);
+    --shadow-sm:0 3px 12px rgba(67,21,46,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Jost',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;min-height:100vh}
+  button{font-family:inherit;cursor:pointer}
+  input,select,textarea{font-family:inherit}
+
+  /* ── LOCK SCREEN ── */
+  .lock{position:fixed;inset:0;z-index:2000;background:linear-gradient(150deg,var(--plum),var(--wine));display:flex;align-items:center;justify-content:center;padding:20px}
+  .lock-card{background:#fff;border-radius:28px;padding:46px 38px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .lock-card .l-ico{width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--wine));display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 18px;box-shadow:0 12px 26px -6px rgba(179,69,112,.55)}
+  .lock-card h1{font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:4px}
+  .lock-card p{font-size:13.5px;color:var(--grey);margin-bottom:24px;font-weight:300}
+  .lock-card input{width:100%;padding:15px;border:1.5px solid #eedde6;border-radius:14px;font-size:22px;text-align:center;letter-spacing:12px;margin-bottom:14px}
+  .lock-card input:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3.5px rgba(179,69,112,.13)}
+  .lock-card button{width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--wine));color:#fff;font-size:15.5px;font-weight:600}
+  .lock-err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
+  .lock-hint{margin-top:16px;font-size:12px;color:var(--grey);background:var(--cream);border-radius:10px;padding:9px}
+
+  /* ── HEADER ── */
+  header{background:linear-gradient(120deg,var(--plum),var(--wine));color:#fff;padding:22px 20px}
+  .head-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .head-brand{display:flex;align-items:center;gap:13px}
+  .head-brand .hb-ico{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:24px}
+  .head-brand b{font-family:'Cormorant Garamond',serif;font-size:20px;display:block;line-height:1.25}
+  .head-brand small{font-size:12px;opacity:.8;font-weight:300}
+  .head-date{font-size:13px;opacity:.9;text-align:right;font-weight:300}
+  .head-date b{font-size:15px;display:block;font-weight:600}
+
+  .shell{max-width:1080px;margin:0 auto;padding:26px 20px 90px}
+
+  /* ── STATS ── */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:#fff;border-radius:18px;padding:20px 22px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:15px;border-left:5px solid var(--rose)}
+  .stat.s-amber{border-left-color:var(--amber)}
+  .stat.s-green{border-left-color:var(--green)}
+  .stat.s-gold{border-left-color:var(--gold)}
+  .stat .st-ico{font-size:26px}
+  .stat b{font-size:26px;display:block;line-height:1.15}
+  .stat span{font-size:12px;color:var(--grey)}
+
+  /* ── TOOLBAR ── */
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+  .tabs{display:flex;background:#fff;border-radius:50px;padding:5px;box-shadow:var(--shadow-sm);gap:2px;flex-wrap:wrap}
+  .tab{border:none;background:none;padding:9px 20px;border-radius:50px;font-size:13.5px;font-weight:500;color:var(--grey);transition:.2s}
+  .tab.active{background:linear-gradient(135deg,var(--rose),var(--wine));color:#fff;box-shadow:0 6px 14px -4px rgba(179,69,112,.55)}
+  .search-box{flex:1;min-width:180px;position:relative}
+  .search-box input{width:100%;padding:12px 16px 12px 42px;border:1.5px solid #eedde6;border-radius:50px;font-size:14px;background:#fff}
+  .search-box input:focus{outline:none;border-color:var(--rose)}
+  .search-box::before{content:"🔍";position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:14px}
+  .btn-add{border:none;background:linear-gradient(135deg,var(--gold),#ac8a1a);color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:600;box-shadow:0 8px 18px -4px rgba(201,162,39,.55);transition:.2s;display:inline-flex;gap:8px;align-items:center}
+  .btn-add:hover{transform:translateY(-2px)}
+
+  /* ── DATE GROUPS ── */
+  .dgroup{margin-bottom:26px}
+  .dhead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .dhead .d-label{font-size:15px;font-weight:600}
+  .dhead .d-label.today{color:var(--rose)}
+  .dhead .d-count{background:var(--rose-soft);color:var(--wine);font-size:11.5px;font-weight:600;padding:3px 12px;border-radius:40px}
+  .dhead .d-line{flex:1;height:1.5px;background:#f0dfe7;border-radius:2px}
+
+  /* ── APPOINTMENT CARD ── */
+  .apt{background:#fff;border-radius:16px;box-shadow:var(--shadow-sm);padding:16px 18px;margin-bottom:12px;display:grid;grid-template-columns:86px 1fr auto;gap:16px;align-items:center;transition:.2s;border:1.5px solid transparent}
+  .apt:hover{box-shadow:var(--shadow-md);border-color:rgba(179,69,112,.25)}
+  .apt.done-look{opacity:.62}
+  .apt-time{text-align:center;background:var(--cream);border-radius:13px;padding:10px 6px}
+  .apt-time b{font-size:17px;display:block;line-height:1.2;color:var(--rose)}
+  .apt-time small{font-size:10.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.5px}
+  .apt-mid{min-width:0}
+  .apt-name{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .badge{font-size:10.5px;font-weight:700;padding:3px 11px;border-radius:40px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}
+  .b-pending{background:var(--amber-bg);color:#92610a}
+  .b-confirmed{background:var(--rose-soft);color:var(--wine)}
+  .b-completed{background:var(--green-bg);color:var(--green)}
+  .b-cancelled{background:var(--red-bg);color:var(--red)}
+  .apt-info{font-size:13px;color:var(--grey);margin-top:3px;display:flex;gap:14px;flex-wrap:wrap}
+  .apt-info span{display:inline-flex;gap:5px;align-items:center}
+  .apt-note{font-size:12.5px;color:var(--grey);background:var(--cream);border-radius:9px;padding:6px 11px;margin-top:8px;display:inline-block}
+  .apt-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+  .act{border:none;width:38px;height:38px;border-radius:12px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.18s;background:var(--cream)}
+  .act:hover{transform:translateY(-2px)}
+  .act.a-wa{background:#e3f9ec}
+  .act.a-call{background:var(--rose-soft)}
+  .act.a-ok{background:var(--green-bg)}
+  .act.a-x{background:var(--red-bg)}
+  .act.a-edit{background:var(--slate-bg)}
+  @media(max-width:640px){
+    .apt{grid-template-columns:70px 1fr}
+    .apt-actions{grid-column:1 / -1;justify-content:flex-start;border-top:1px dashed #f0dfe7;padding-top:11px}
+  }
+
+  .empty{background:#fff;border-radius:18px;padding:54px 24px;text-align:center;box-shadow:var(--shadow-sm)}
+  .empty .e-ico{font-size:52px;margin-bottom:12px}
+  .empty b{font-size:17px;display:block;margin-bottom:6px}
+  .empty p{font-size:13.5px;color:var(--grey);font-weight:300}
+
+  /* ── MODAL ── */
+  .modal-bg{position:fixed;inset:0;z-index:1500;background:rgba(46,20,34,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{background:#fff;border-radius:24px;padding:34px;max-width:520px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .modal h2{font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+  .field label{display:block;font-size:12.5px;font-weight:600;margin-bottom:6px;color:var(--plum)}
+  .field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1.5px solid #eedde6;border-radius:12px;font-size:14.5px;background:#fdfafb}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3.5px rgba(179,69,112,.13)}
+  .modal-btns{display:flex;gap:12px;margin-top:22px}
+  .modal-btns button{flex:1;padding:14px;border:none;border-radius:13px;font-size:15px;font-weight:600}
+  .m-save{background:linear-gradient(135deg,var(--rose),var(--wine));color:#fff}
+  .m-cancel{background:var(--slate-bg);color:var(--ink)}
+
+  /* ── FOOTER BAR ── */
+  .foot-tools{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1.5px solid #f0dfe7;padding:11px 20px;z-index:800}
+  .ft-in{max-width:1080px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .ft-in .ft-left{display:flex;gap:10px;flex-wrap:wrap}
+  .ft-btn{border:1.5px solid #eedde6;background:#fff;padding:8px 16px;border-radius:40px;font-size:12.5px;font-weight:500;color:var(--grey);transition:.2s}
+  .ft-btn:hover{border-color:var(--rose);color:var(--wine)}
+  .ft-note{font-size:11.5px;color:var(--grey);font-weight:300}
+
+  .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);z-index:2500;background:var(--plum);color:#fff;padding:13px 26px;border-radius:50px;font-size:14px;font-weight:500;box-shadow:0 14px 34px rgba(0,0,0,.3);transition:.35s;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOCK SCREEN ═══════ -->
+<div class="lock" id="lockScreen">
+  <div class="lock-card">
+    <div class="l-ico">🔐</div>
+    <h1>Srejoni Spa &amp; Aromatherapy</h1>
+    <p>Appointment Manager — staff only</p>
+    <input type="password" id="pinInput" maxlength="4" inputmode="numeric" placeholder="••••" autocomplete="off">
+    <button onclick="tryUnlock()">Unlock Dashboard</button>
+    <div class="lock-err" id="lockErr"></div>
+    <div class="lock-hint">🔑 Demo PIN: <b>1234</b> &nbsp;·&nbsp; (changed for the salon before delivery)</div>
+  </div>
+</div>
+
+<!-- ═══════ HEADER ═══════ -->
+<header>
+  <div class="head-in">
+    <div class="head-brand">
+      <span class="hb-ico">🌸</span>
+      <span><b>Srejoni Spa &amp; Aromatherapy</b><small>Appointment Manager</small></span>
+    </div>
+    <div class="head-date"><small>Today</small><b id="todayLabel"></b></div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- ═══════ STATS ═══════ -->
+  <div class="stats">
+    <div class="stat"><span class="st-ico">📅</span><span><b id="stToday">0</b><span>Appointments Today</span></span></div>
+    <div class="stat s-gold"><span class="st-ico">📆</span><span><b id="stWeek">0</b><span>Upcoming (7 days)</span></span></div>
+    <div class="stat s-amber"><span class="st-ico">⏳</span><span><b id="stPending">0</b><span>Waiting to Confirm</span></span></div>
+    <div class="stat s-green"><span class="st-ico">✅</span><span><b id="stDone">0</b><span>Total Completed</span></span></div>
+  </div>
+
+  <!-- ═══════ TOOLBAR ═══════ -->
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-view="today">Today</button>
+      <button class="tab" data-view="upcoming">Upcoming</button>
+      <button class="tab" data-view="past">Past</button>
+      <button class="tab" data-view="all">All</button>
+    </div>
+    <div class="search-box"><input type="text" id="searchInput" placeholder="Search name or phone..."></div>
+    <button class="btn-add" onclick="openModal()">➕ New Appointment</button>
+  </div>
+
+  <!-- ═══════ LIST ═══════ -->
+  <div id="listArea"></div>
+</div>
+
+<!-- ═══════ ADD/EDIT MODAL ═══════ -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2 id="modalTitle">➕ New Appointment</h2>
+    <form id="aptForm">
+      <input type="hidden" id="fId">
+      <div class="form-row">
+        <div class="field"><label>Client Name *</label><input type="text" id="fName" required placeholder="e.g. Priya Sharma"></div>
+        <div class="field"><label>Phone Number *</label><input type="tel" id="fPhone" required placeholder="e.g. 9830012345"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Date *</label><input type="date" id="fDate" required></div>
+        <div class="field"><label>Time *</label><input type="time" id="fTime" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Service</label>
+          <select id="fService">
+            <option>Bridal Makeup</option><option>Party Makeup</option>
+            <option>Facial / Clean-up</option><option>Hair Cut &amp; Styling</option>
+            <option>Hair Colour / Highlights</option><option>Keratin / Smoothening</option>
+            <option>Hair Spa</option><option>Spa &amp; Aromatherapy</option>
+            <option>Manicure / Pedicure</option><option>Nail Art</option>
+            <option>Waxing / Threading</option><option>Body Polishing / De-Tan</option>
+            <option>Pre-Bridal Package</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Status</label>
+          <select id="fStatus">
+            <option value="pending">⏳ Pending</option>
+            <option value="confirmed">✅ Confirmed</option>
+            <option value="completed">✔️ Completed</option>
+            <option value="cancelled">✖️ Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Note (optional)</label><textarea id="fNote" rows="2" placeholder="e.g. Bridal trial / sensitive skin / regular client"></textarea></div>
+      <div class="modal-btns">
+        <button type="button" class="m-cancel" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="m-save">💾 Save Appointment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════ FOOTER TOOLS ═══════ -->
+<div class="foot-tools">
+  <div class="ft-in">
+    <div class="ft-left">
+      <button class="ft-btn" onclick="exportCSV()">📊 Export Excel (CSV)</button>
+      <button class="ft-btn" onclick="backupJSON()">💾 Backup</button>
+      <button class="ft-btn" onclick="document.getElementById('restoreFile').click()">📂 Restore</button>
+      <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreJSON(this)">
+      <button class="ft-btn" onclick="resetDemo()">🔄 Load Demo Data</button>
+    </div>
+    <span class="ft-note">💡 Data is saved on this device — take a Backup every week</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════ CONFIG ═══════ */
+const PIN = "1234";                 // change before delivering to the salon
+const STORE_KEY = "srejoni_appointments";
+const SALON_NAME = "Srejoni Spa & Aromatherapy";
+
+/* ═══════ LOCK ═══════ */
+function tryUnlock(){
+  const v = document.getElementById("pinInput").value;
+  if(v === PIN){
+    sessionStorage.setItem("srejoni_unlocked","1");
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    document.getElementById("lockErr").textContent = "Wrong PIN — try again";
+    document.getElementById("pinInput").value = "";
+  }
+}
+document.getElementById("pinInput").addEventListener("keydown", e => { if(e.key === "Enter") tryUnlock(); });
+if(sessionStorage.getItem("srejoni_unlocked") === "1") document.getElementById("lockScreen").style.display = "none";
+
+/* ═══════ DATA ═══════ */
+function load(){ try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch(e){ return []; } }
+function save(list){ localStorage.setItem(STORE_KEY, JSON.stringify(list)); }
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+function todayStr(offset){
+  const d = new Date();
+  d.setDate(d.getDate() + (offset || 0));
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function seedDemo(){
+  const demo = [
+    {id:uid(), name:"Priya Sharma",    phone:"9830011111", service:"Facial / Clean-up",     date:todayStr(0),  time:"11:00", status:"confirmed", note:"Regular client — glow facial"},
+    {id:uid(), name:"Ananya Sen",      phone:"9830022222", service:"Spa & Aromatherapy",    date:todayStr(0),  time:"13:00", status:"pending",   note:""},
+    {id:uid(), name:"Ritu Agarwal",    phone:"9830033333", service:"Hair Colour / Highlights", date:todayStr(0), time:"16:30", status:"confirmed", note:"Wants burgundy shade"},
+    {id:uid(), name:"Sneha Bose",      phone:"9830044444", service:"Bridal Makeup",         date:todayStr(1),  time:"10:30", status:"confirmed", note:"BRIDAL TRIAL — wedding on 25th"},
+    {id:uid(), name:"Moumita Das",     phone:"9830055555", service:"Manicure / Pedicure",   date:todayStr(1),  time:"15:00", status:"pending",   note:""},
+    {id:uid(), name:"Kavita Jain",     phone:"9830066666", service:"Keratin / Smoothening", date:todayStr(3),  time:"11:30", status:"pending",   note:"Long hair — book 3 hours"},
+    {id:uid(), name:"Deepa Roy",       phone:"9830077777", service:"Waxing / Threading",    date:todayStr(-1), time:"12:00", status:"completed", note:""},
+    {id:uid(), name:"Shalini Gupta",   phone:"9830088888", service:"Party Makeup",          date:todayStr(-2), time:"17:00", status:"completed", note:"Anniversary party look"}
+  ];
+  save(demo);
+  return demo;
+}
+let appointments = load();
+if(appointments.length === 0) appointments = seedDemo();
+
+/* ═══════ HELPERS ═══════ */
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function fmtDate(iso){
+  const [y,m,d] = iso.split("-").map(Number);
+  const dt = new Date(y, m-1, d);
+  return DAYS[dt.getDay()] + ", " + d + " " + MONTHS[m-1] + " " + y;
+}
+function dateTag(iso){
+  if(iso === todayStr(0)) return "Today";
+  if(iso === todayStr(1)) return "Tomorrow";
+  if(iso === todayStr(-1)) return "Yesterday";
+  return "";
+}
+function fmtTime(t){
+  let [h,m] = t.split(":").map(Number);
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+  return h + ":" + String(m).padStart(2,"0") + " " + ap;
+}
+function cleanPhone(p){
+  let d = p.replace(/\D/g,"");
+  if(d.length === 10) d = "91" + d;
+  return d;
+}
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+/* ═══════ STATS ═══════ */
+function renderStats(){
+  const today = todayStr(0), week = todayStr(7);
+  document.getElementById("stToday").textContent   = appointments.filter(a => a.date === today && a.status !== "cancelled").length;
+  document.getElementById("stWeek").textContent    = appointments.filter(a => a.date > today && a.date <= week && a.status !== "cancelled").length;
+  document.getElementById("stPending").textContent = appointments.filter(a => a.status === "pending" && a.date >= today).length;
+  document.getElementById("stDone").textContent    = appointments.filter(a => a.status === "completed").length;
+}
+
+/* ═══════ LIST RENDER ═══════ */
+let view = "today", query = "";
+const BADGE = {pending:["b-pending","⏳ Pending"], confirmed:["b-confirmed","✅ Confirmed"], completed:["b-completed","✔ Completed"], cancelled:["b-cancelled","✖ Cancelled"]};
+
+function filtered(){
+  const today = todayStr(0);
+  let list = appointments.slice();
+  if(view === "today")    list = list.filter(a => a.date === today);
+  if(view === "upcoming") list = list.filter(a => a.date > today);
+  if(view === "past")     list = list.filter(a => a.date < today);
+  if(query) list = list.filter(a => (a.name + " " + a.phone).toLowerCase().includes(query));
+  list.sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time));
+  if(view === "past") list.reverse();
+  return list;
+}
+
+function render(){
+  renderStats();
+  const area = document.getElementById("listArea");
+  const list = filtered();
+  if(list.length === 0){
+    const msgs = {
+      today:["🌷","No appointments today","Enjoy the calm — or tap ➕ New Appointment to add one."],
+      upcoming:["📆","Nothing scheduled ahead","New WhatsApp bookings can be added with the ➕ button."],
+      past:["🗂️","No past records","Completed and old appointments will appear here."],
+      all:["📋","No appointments yet","Tap ➕ New Appointment to add your first one."]
+    };
+    const m = msgs[view];
+    area.innerHTML = '<div class="empty"><div class="e-ico">' + m[0] + '</div><b>' + m[1] + '</b><p>' + m[2] + '</p></div>';
+    return;
+  }
+  const groups = {};
+  list.forEach(a => { (groups[a.date] = groups[a.date] || []).push(a); });
+  let html = "";
+  Object.keys(groups).forEach(date => {
+    const tag = dateTag(date);
+    html += '<div class="dgroup"><div class="dhead">' +
+      '<span class="d-label' + (tag === "Today" ? " today" : "") + '">' + (tag ? tag + " · " : "") + fmtDate(date) + '</span>' +
+      '<span class="d-count">' + groups[date].length + ' client' + (groups[date].length > 1 ? 's' : '') + '</span>' +
+      '<span class="d-line"></span></div>';
+    groups[date].forEach(a => {
+      const [bCls, bTxt] = BADGE[a.status];
+      const doneLook = (a.status === "completed" || a.status === "cancelled") ? " done-look" : "";
+      const waMsg = encodeURIComponent("Hello " + a.name + " 🌸 Your appointment at " + SALON_NAME + " is confirmed for " + fmtDate(a.date) + " at " + fmtTime(a.time) + ". We can't wait to pamper you! 💖");
+      html += '<div class="apt' + doneLook + '">' +
+        '<div class="apt-time"><b>' + fmtTime(a.time).split(" ")[0] + '</b><small>' + fmtTime(a.time).split(" ")[1] + '</small></div>' +
+        '<div class="apt-mid">' +
+          '<div class="apt-name">' + esc(a.name) + ' <span class="badge ' + bCls + '">' + bTxt + '</span></div>' +
+          '<div class="apt-info"><span>💅 ' + esc(a.service) + '</span><span>📞 ' + esc(a.phone) + '</span></div>' +
+          (a.note ? '<div class="apt-note">📝 ' + esc(a.note) + '</div>' : '') +
+        '</div>' +
+        '<div class="apt-actions">' +
+          '<a class="act a-wa" title="Send WhatsApp confirmation" href="https://wa.me/' + cleanPhone(a.phone) + '?text=' + waMsg + '" target="_blank" rel="noopener">💬</a>' +
+          '<a class="act a-call" title="Call client" href="tel:+' + cleanPhone(a.phone) + '">📞</a>' +
+          (a.status === "pending" ? '<button class="act a-ok" title="Mark Confirmed" onclick="setStatus(\'' + a.id + '\',\'confirmed\')">✅</button>' : '') +
+          (a.status !== "completed" && a.status !== "cancelled" ? '<button class="act a-ok" title="Mark Completed" onclick="setStatus(\'' + a.id + '\',\'completed\')">✔️</button>' : '') +
+          (a.status !== "cancelled" && a.status !== "completed" ? '<button class="act a-x" title="Cancel appointment" onclick="setStatus(\'' + a.id + '\',\'cancelled\')">✖️</button>' : '') +
+          '<button class="act a-edit" title="Edit" onclick="openModal(\'' + a.id + '\')">✏️</button>' +
+          '<button class="act a-x" title="Delete permanently" onclick="removeApt(\'' + a.id + '\')">🗑️</button>' +
+        '</div></div>';
+    });
+    html += '</div>';
+  });
+  area.innerHTML = html;
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* ═══════ ACTIONS ═══════ */
+function setStatus(id, st){
+  const a = appointments.find(x => x.id === id);
+  if(!a) return;
+  a.status = st;
+  save(appointments); render();
+  toast(st === "confirmed" ? "✅ Marked as confirmed" : st === "completed" ? "✔️ Marked as completed" : "✖️ Appointment cancelled");
+}
+function removeApt(id){
+  if(!confirm("Delete this appointment permanently?")) return;
+  appointments = appointments.filter(x => x.id !== id);
+  save(appointments); render();
+  toast("🗑️ Deleted");
+}
+
+/* ═══════ MODAL ═══════ */
+function openModal(id){
+  document.getElementById("modalBg").classList.add("open");
+  const f = document.getElementById("aptForm");
+  f.reset();
+  document.getElementById("fId").value = "";
+  document.getElementById("modalTitle").textContent = "➕ New Appointment";
+  document.getElementById("fDate").value = todayStr(0);
+  if(id){
+    const a = appointments.find(x => x.id === id);
+    if(a){
+      document.getElementById("modalTitle").textContent = "✏️ Edit Appointment";
+      document.getElementById("fId").value = a.id;
+      document.getElementById("fName").value = a.name;
+      document.getElementById("fPhone").value = a.phone;
+      document.getElementById("fDate").value = a.date;
+      document.getElementById("fTime").value = a.time;
+      document.getElementById("fService").value = a.service;
+      document.getElementById("fStatus").value = a.status;
+      document.getElementById("fNote").value = a.note || "";
+    }
+  }
+}
+function closeModal(){ document.getElementById("modalBg").classList.remove("open"); }
+document.getElementById("modalBg").addEventListener("click", e => { if(e.target.id === "modalBg") closeModal(); });
+
+document.getElementById("aptForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const id = document.getElementById("fId").value;
+  const data = {
+    name: document.getElementById("fName").value.trim(),
+    phone: document.getElementById("fPhone").value.trim(),
+    date: document.getElementById("fDate").value,
+    time: document.getElementById("fTime").value,
+    service: document.getElementById("fService").value,
+    status: document.getElementById("fStatus").value,
+    note: document.getElementById("fNote").value.trim()
+  };
+  if(id){
+    const a = appointments.find(x => x.id === id);
+    Object.assign(a, data);
+    toast("✏️ Appointment updated");
+  } else {
+    appointments.push(Object.assign({id: uid()}, data));
+    toast("✅ Appointment added");
+  }
+  save(appointments); closeModal(); render();
+});
+
+/* ═══════ TABS + SEARCH ═══════ */
+document.getElementById("tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if(!t) return;
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  view = t.dataset.view;
+  render();
+});
+document.getElementById("searchInput").addEventListener("input", e => {
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
+/* ═══════ EXPORT / BACKUP ═══════ */
+function download(name, content, type){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function exportCSV(){
+  let csv = "Date,Time,Client,Phone,Service,Status,Note\n";
+  appointments.slice().sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time)).forEach(a => {
+    csv += [a.date, a.time, a.name, a.phone, a.service, a.status, (a.note || "").replace(/[,\n]/g," ")].map(v => '"' + v + '"').join(",") + "\n";
+  });
+  download("appointments-" + todayStr(0) + ".csv", csv, "text/csv");
+  toast("📊 Excel file downloaded");
+}
+function backupJSON(){
+  download("backup-appointments-" + todayStr(0) + ".json", JSON.stringify(appointments, null, 2), "application/json");
+  toast("💾 Backup downloaded — keep it safe!");
+}
+function restoreJSON(inp){
+  const file = inp.files[0];
+  if(!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if(!Array.isArray(data)) throw 0;
+      appointments = data;
+      save(appointments); render();
+      toast("📂 Backup restored — " + data.length + " appointments loaded");
+    } catch(e){ toast("⚠️ That file is not a valid backup"); }
+  };
+  r.readAsText(file);
+  inp.value = "";
+}
+function resetDemo(){
+  if(!confirm("Replace current data with fresh demo data?")) return;
+  appointments = seedDemo();
+  render();
+  toast("🔄 Demo data loaded");
+}
+
+/* ═══════ INIT ═══════ */
+document.getElementById("todayLabel").textContent = fmtDate(todayStr(0));
+render();
+</script>
+</body>
+</html>

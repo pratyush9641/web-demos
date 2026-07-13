@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Zone — Megasteel Fitness</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%23101014'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='%23e6392e' font-family='Arial Black' font-weight='900'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0c0c10; --steel:#15151b; --steel-2:#1d1d25;
+    --red:#e6392e; --red-dark:#c22a20;
+    --silver:#9b9ba8; --line:rgba(255,255,255,.09);
+    --amber:#f5a623; --green:#2ecc71;
+    --wa:#25d366;
+    --shadow:0 14px 40px -12px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Barlow',system-ui,sans-serif;background:var(--black);color:#e9e9ee;line-height:1.55;min-height:100vh;font-size:15px}
+  button{font-family:inherit;cursor:pointer}
+  input,select,textarea{font-family:inherit}
+  a{text-decoration:none;color:inherit}
+  .bebas{font-family:'Bebas Neue',sans-serif}
+
+  .shell{max-width:820px;margin:0 auto;padding:22px 16px 100px}
+
+  /* ── HEADER ── */
+  header{background:var(--steel);border-bottom:1px solid var(--line);padding:18px 16px}
+  .head-in{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .head-brand{display:flex;align-items:center;gap:12px}
+  .head-brand .hb-mark{width:44px;height:44px;background:var(--red);clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff}
+  .head-brand b{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;display:block;line-height:1.15;color:#fff}
+  .head-brand small{font-size:11px;color:var(--silver);letter-spacing:1.5px;text-transform:uppercase}
+  .head-edit{border:1px solid var(--line);background:var(--black);color:var(--silver);padding:9px 16px;font-size:12.5px;transition:.2s}
+  .head-edit:hover{border-color:var(--red);color:#fff}
+
+  .greet{margin:24px 0 18px}
+  .greet h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,7vw,44px);letter-spacing:1.5px;line-height:1;color:#fff}
+  .greet h1 span{color:var(--red)}
+  .greet p{color:var(--silver);font-size:13.5px}
+
+  .card{background:var(--steel);border:1px solid var(--line);padding:22px;margin-bottom:16px}
+  .card h3{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2.5px;color:var(--silver);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .card h3::before{content:"";width:18px;height:3px;background:var(--red)}
+
+  /* ── SUBSCRIPTION ── */
+  .sub-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .sub-plan b{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:#fff;display:block;line-height:1}
+  .sub-plan small{font-size:12.5px;color:var(--silver)}
+  .badge{font-size:10.5px;font-weight:700;padding:5px 14px;letter-spacing:1.5px;text-transform:uppercase}
+  .badge.active{background:rgba(46,204,113,.12);color:var(--green);border:1px solid rgba(46,204,113,.4)}
+  .badge.expiring{background:rgba(245,166,35,.12);color:var(--amber);border:1px solid rgba(245,166,35,.4)}
+  .badge.expired{background:rgba(230,57,46,.12);color:var(--red);border:1px solid rgba(230,57,46,.4)}
+  .sub-days{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+  .sub-days b{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:#fff}
+  .sub-days span{font-size:13px;color:var(--silver);letter-spacing:1px;text-transform:uppercase}
+  .bar{height:10px;background:var(--black);border:1px solid var(--line);overflow:hidden;margin-bottom:16px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),#ff6a5f);transition:width 1s ease}
+  .sub-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+  .sub-foot small{color:var(--silver);font-size:12.5px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;border:none;transition:.25s;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+  .btn-wa{background:var(--wa);color:#fff}
+  .btn-wa:hover{filter:brightness(1.08)}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-dark)}
+  .btn-ghost{background:var(--black);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);clip-path:none}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--red)}
+
+  /* ── MONTH GRID ── */
+  .month-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:640px){.month-grid{grid-template-columns:repeat(2,1fr)}}
+  .m-stat{background:var(--black);border:1px solid var(--line);padding:16px;text-align:center}
+  .m-stat b{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:1;color:#fff;display:block}
+  .m-stat b i{font-style:normal;color:var(--red);font-size:.6em}
+  .m-stat span{font-size:10.5px;color:var(--silver);letter-spacing:1.2px;text-transform:uppercase}
+  .target-bar{margin-top:16px}
+  .target-bar .tb-top{display:flex;justify-content:space-between;font-size:12.5px;color:var(--silver);margin-bottom:8px}
+  .target-bar .tb-top b{color:#fff}
+  .target-msg{font-size:12.5px;margin-top:10px;color:var(--silver)}
+  .target-msg.good{color:var(--green)}
+  .target-msg.push{color:var(--amber)}
+
+  /* ── LOG FORM ── */
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+  .field label{display:block;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;margin-bottom:7px;color:var(--silver)}
+  .field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:var(--black);color:#fff;font-size:14.5px;border-radius:0}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red)}
+  .field select option{background:var(--steel)}
+  .field input[type="date"]{color-scheme:dark}
+
+  /* ── CHART ── */
+  .chart{display:flex;align-items:flex-end;gap:5px;height:130px;padding-top:8px}
+  .cbar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}
+  .cbar i{width:100%;background:linear-gradient(180deg,#ff6a5f,var(--red));min-height:3px;transition:height .8s ease}
+  .cbar.empty i{background:var(--steel-2)}
+  .cbar.rest i{background:#3a3a46}
+  .cbar small{font-size:9px;color:var(--silver);letter-spacing:.5px}
+  .chart-legend{display:flex;gap:18px;margin-top:14px;font-size:11px;color:var(--silver)}
+  .chart-legend span{display:inline-flex;align-items:center;gap:7px}
+  .chart-legend i{width:12px;height:12px;display:inline-block}
+  .lg-w{background:var(--red)}.lg-r{background:#3a3a46}.lg-e{background:var(--steel-2)}
+
+  /* ── HISTORY ── */
+  .hist-item{display:grid;grid-template-columns:74px 1fr auto;gap:14px;align-items:center;background:var(--black);border:1px solid var(--line);padding:12px 14px;margin-bottom:9px}
+  .hist-item .h-date{text-align:center}
+  .hist-item .h-date b{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--red);display:block;line-height:1.1}
+  .hist-item .h-date small{font-size:9.5px;color:var(--silver);text-transform:uppercase;letter-spacing:1px}
+  .hist-item .h-mid b{font-size:14px;color:#fff;display:block}
+  .hist-item .h-mid small{font-size:12px;color:var(--silver)}
+  .hist-item .h-del{border:1px solid var(--line);background:none;color:var(--silver);width:32px;height:32px;font-size:13px;transition:.2s}
+  .hist-item .h-del:hover{border-color:var(--red);color:var(--red)}
+
+  /* ── SETUP / MODAL ── */
+  .overlay{position:fixed;inset:0;z-index:1500;background:rgba(0,0,0,.82);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+  .overlay.open{display:flex}
+  .panel{background:var(--steel);border:1px solid var(--line);padding:34px;max-width:480px;width:100%;box-shadow:var(--shadow);margin:auto}
+  .panel .p-mark{width:64px;height:64px;background:var(--red);clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;margin:0 auto 16px}
+  .panel h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;text-align:center;color:#fff;margin-bottom:4px}
+  .panel .p-sub{text-align:center;font-size:13px;color:var(--silver);margin-bottom:24px}
+  .panel .btn{width:100%;margin-top:8px;padding:15px}
+
+  /* ── FOOT TOOLS ── */
+  .foot-tools{position:fixed;bottom:0;left:0;right:0;background:var(--steel);border-top:1px solid var(--line);padding:10px 16px;z-index:800}
+  .ft-in{max-width:820px;margin:0 auto;display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:center}
+  .ft-btn{border:1px solid var(--line);background:var(--black);padding:8px 14px;font-size:12px;color:var(--silver);transition:.2s}
+  .ft-btn:hover{border-color:var(--red);color:#fff}
+
+  .toast{position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-80px);z-index:2500;background:var(--red);color:#fff;padding:12px 26px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;box-shadow:var(--shadow);transition:.35s;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header>
+  <div class="head-in">
+    <a href="index.html" class="head-brand">
+      <span class="hb-mark">M</span>
+      <span><b>MEGASTEEL</b><small>Member Zone</small></span>
+    </a>
+    <button class="head-edit" onclick="openProfile()">⚙️ Profile</button>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="greet">
+    <h1>WELCOME BACK, <span id="gName">CHAMP</span></h1>
+    <p id="gDate"></p>
+  </div>
+
+  <!-- ═══════ SUBSCRIPTION ═══════ -->
+  <div class="card">
+    <h3>MY MEMBERSHIP</h3>
+    <div class="sub-top">
+      <div class="sub-plan"><b id="subPlan">—</b><small id="subDates">—</small></div>
+      <span class="badge active" id="subBadge">ACTIVE</span>
+    </div>
+    <div class="sub-days"><b id="subDays">0</b><span>days<br>left</span></div>
+    <div class="bar"><i id="subBar" style="width:0%"></i></div>
+    <div class="sub-foot">
+      <small id="subHint">Renew before expiry to keep your streak alive.</small>
+      <a href="#" id="renewBtn" target="_blank" rel="noopener" class="btn btn-wa">💬 RENEW ON WHATSAPP</a>
+    </div>
+  </div>
+
+  <!-- ═══════ THIS MONTH ═══════ -->
+  <div class="card">
+    <h3>THIS MONTH</h3>
+    <div class="month-grid">
+      <div class="m-stat"><b id="mWorkouts">0</b><span>Workouts</span></div>
+      <div class="m-stat"><b id="mStreak">0<i>🔥</i></b><span>Day Streak</span></div>
+      <div class="m-stat"><b id="mMins">0</b><span>Minutes</span></div>
+      <div class="m-stat"><b id="mWeight">—</b><span>Weight Δ (kg)</span></div>
+    </div>
+    <div class="target-bar">
+      <div class="tb-top"><span>MONTHLY TARGET</span><b><span id="tDone">0</span> / <span id="tGoal">20</span> workouts</b></div>
+      <div class="bar"><i id="tBar" style="width:0%"></i></div>
+      <div class="target-msg" id="tMsg"></div>
+    </div>
+  </div>
+
+  <!-- ═══════ LOG TODAY ═══════ -->
+  <div class="card">
+    <h3>LOG MY WORKOUT</h3>
+    <form id="logForm">
+      <div class="form-row">
+        <div class="field"><label>DATE</label><input type="date" id="lDate" required></div>
+        <div class="field"><label>WORKOUT TYPE</label>
+          <select id="lType">
+            <option>Strength</option><option>Cardio</option><option>Mixed</option>
+            <option>Core / Abs</option><option>Yoga / Stretch</option><option>Rest Day</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>DURATION (MINUTES)</label><input type="number" id="lMins" min="0" max="600" placeholder="e.g. 60"></div>
+        <div class="field"><label>BODY WEIGHT (KG, OPTIONAL)</label><input type="number" id="lWeight" min="20" max="300" step="0.1" placeholder="e.g. 72.5"></div>
+      </div>
+      <div class="field" style="margin-bottom:16px"><label>NOTE (OPTIONAL)</label><input type="text" id="lNote" placeholder="e.g. chest day, new PR on bench 🏋️"></div>
+      <button type="submit" class="btn btn-red" style="width:100%">💪 SAVE WORKOUT</button>
+    </form>
+  </div>
+
+  <!-- ═══════ LAST 14 DAYS ═══════ -->
+  <div class="card">
+    <h3>LAST 14 DAYS</h3>
+    <div class="chart" id="chart"></div>
+    <div class="chart-legend">
+      <span><i class="lg-w"></i> Workout</span>
+      <span><i class="lg-r"></i> Rest day</span>
+      <span><i class="lg-e"></i> No entry</span>
+    </div>
+  </div>
+
+  <!-- ═══════ HISTORY ═══════ -->
+  <div class="card">
+    <h3>RECENT ENTRIES</h3>
+    <div id="histArea"></div>
+  </div>
+</div>
+
+<!-- ═══════ SETUP / PROFILE ═══════ -->
+<div class="overlay" id="setupOverlay">
+  <div class="panel">
+    <div class="p-mark">M</div>
+    <h2 id="setupTitle">SET UP MEMBER ZONE</h2>
+    <p class="p-sub" id="setupSub">One minute — then track everything, every day.</p>
+    <form id="profileForm">
+      <div class="field" style="margin-bottom:12px"><label>YOUR NAME *</label><input type="text" id="pName" required placeholder="e.g. Rahul"></div>
+      <div class="form-row">
+        <div class="field"><label>MEMBERSHIP PLAN *</label>
+          <select id="pPlan">
+            <option value="1">Monthly</option>
+            <option value="3">Quarterly (3 months)</option>
+            <option value="6">Half-Yearly (6 months)</option>
+            <option value="12">Yearly</option>
+          </select>
+        </div>
+        <div class="field"><label>PLAN START DATE *</label><input type="date" id="pStart" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>MONTHLY WORKOUT TARGET</label><input type="number" id="pTarget" min="1" max="31" value="20"></div>
+        <div class="field"><label>STARTING WEIGHT (KG)</label><input type="number" id="pWeight" min="20" max="300" step="0.1" placeholder="optional"></div>
+      </div>
+      <button type="submit" class="btn btn-red">🔥 LET'S GO</button>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════ FOOT TOOLS ═══════ -->
+<div class="foot-tools">
+  <div class="ft-in">
+    <button class="ft-btn" onclick="backupJSON()">💾 Backup</button>
+    <button class="ft-btn" onclick="document.getElementById('restoreFile').click()">📂 Restore</button>
+    <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreJSON(this)">
+    <button class="ft-btn" onclick="resetAll()">🗑️ Reset All</button>
+    <span style="font-size:11px;color:var(--silver)">Data stays on YOUR phone 🔒</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════ CONFIG ═══════ */
+const WA_NUMBER = "919836951725";
+const P_KEY = "ms_member_profile";
+const L_KEY = "ms_member_logs";
+const PLAN_NAMES = {1:"MONTHLY", 3:"QUARTERLY", 6:"HALF-YEARLY", 12:"YEARLY"};
+
+/* ═══════ STORAGE ═══════ */
+function loadP(){ try { return JSON.parse(localStorage.getItem(P_KEY)); } catch(e){ return null; } }
+function saveP(p){ localStorage.setItem(P_KEY, JSON.stringify(p)); }
+function loadL(){ try { return JSON.parse(localStorage.getItem(L_KEY)) || []; } catch(e){ return []; } }
+function saveL(l){ localStorage.setItem(L_KEY, JSON.stringify(l)); }
+let profile = loadP();
+let logs = loadL();
+
+/* ═══════ DATE HELPERS ═══════ */
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function iso(d){ return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0"); }
+function todayISO(){ return iso(new Date()); }
+function fromISO(s){ const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); }
+function fmtShort(s){ const d = fromISO(s); return d.getDate() + " " + MONTHS[d.getMonth()]; }
+function addMonths(dateStr, n){
+  const d = fromISO(dateStr);
+  const day = d.getDate();
+  d.setMonth(d.getMonth() + n);
+  if(d.getDate() < day) d.setDate(0);
+  return d;
+}
+function daysBetween(a, b){ return Math.round((b - a) / 86400000); }
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2200);
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* ═══════ SETUP / PROFILE ═══════ */
+function openProfile(){
+  document.getElementById("setupOverlay").classList.add("open");
+  if(profile){
+    document.getElementById("setupTitle").textContent = "EDIT PROFILE";
+    document.getElementById("setupSub").textContent = "Renewed? Update your plan start date here.";
+    document.getElementById("pName").value = profile.name;
+    document.getElementById("pPlan").value = profile.planMonths;
+    document.getElementById("pStart").value = profile.start;
+    document.getElementById("pTarget").value = profile.target;
+    document.getElementById("pWeight").value = profile.startWeight || "";
+  } else {
+    document.getElementById("pStart").value = todayISO();
+  }
+}
+document.getElementById("profileForm").addEventListener("submit", e => {
+  e.preventDefault();
+  profile = {
+    name: document.getElementById("pName").value.trim(),
+    planMonths: +document.getElementById("pPlan").value,
+    start: document.getElementById("pStart").value,
+    target: Math.max(1, +document.getElementById("pTarget").value || 20),
+    startWeight: parseFloat(document.getElementById("pWeight").value) || null
+  };
+  saveP(profile);
+  document.getElementById("setupOverlay").classList.remove("open");
+  render();
+  toast("💪 PROFILE SAVED");
+});
+
+/* ═══════ LOG FORM ═══════ */
+document.getElementById("lDate").value = todayISO();
+document.getElementById("logForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const entry = {
+    date: document.getElementById("lDate").value,
+    type: document.getElementById("lType").value,
+    mins: +document.getElementById("lMins").value || 0,
+    weight: parseFloat(document.getElementById("lWeight").value) || null,
+    note: document.getElementById("lNote").value.trim()
+  };
+  logs = logs.filter(l => l.date !== entry.date);   // one entry per day
+  logs.push(entry);
+  logs.sort((a,b) => a.date.localeCompare(b.date));
+  saveL(logs);
+  document.getElementById("logForm").reset();
+  document.getElementById("lDate").value = todayISO();
+  render();
+  toast(entry.type === "Rest Day" ? "😴 REST DAY LOGGED" : "🔥 WORKOUT SAVED");
+});
+
+function deleteLog(date){
+  if(!confirm("Delete the entry for " + fmtShort(date) + "?")) return;
+  logs = logs.filter(l => l.date !== date);
+  saveL(logs);
+  render();
+  toast("🗑️ DELETED");
+}
+
+/* ═══════ RENDER ═══════ */
+function render(){
+  if(!profile){ document.getElementById("setupOverlay").classList.add("open"); return; }
+
+  document.getElementById("gName").textContent = profile.name.toUpperCase();
+  const now = new Date();
+  document.getElementById("gDate").textContent = now.toDateString();
+
+  /* subscription */
+  const expiry = addMonths(profile.start, profile.planMonths);
+  const totalDays = daysBetween(fromISO(profile.start), expiry);
+  const usedDays = Math.max(0, daysBetween(fromISO(profile.start), fromISO(todayISO())));
+  const daysLeft = daysBetween(fromISO(todayISO()), expiry);
+  document.getElementById("subPlan").textContent = PLAN_NAMES[profile.planMonths] + " PLAN";
+  document.getElementById("subDates").textContent = fmtShort(profile.start) + " → " + iso(expiry).split("-").reverse().slice(0,2).join(" ") + " " + expiry.getFullYear() + " (renews " + fmtShort(iso(expiry)) + ")";
+  document.getElementById("subDays").textContent = Math.max(0, daysLeft);
+  document.getElementById("subBar").style.width = Math.min(100, Math.max(0, (usedDays/totalDays)*100)) + "%";
+  const badge = document.getElementById("subBadge");
+  const hint = document.getElementById("subHint");
+  if(daysLeft < 0){
+    badge.textContent = "EXPIRED"; badge.className = "badge expired";
+    hint.textContent = "Your plan expired " + Math.abs(daysLeft) + " day(s) ago — renew now and get back in!";
+  } else if(daysLeft <= 7){
+    badge.textContent = "EXPIRING SOON"; badge.className = "badge expiring";
+    hint.textContent = "Only " + daysLeft + " day(s) left — renew on WhatsApp before it lapses.";
+  } else {
+    badge.textContent = "ACTIVE"; badge.className = "badge active";
+    hint.textContent = "You're all set. Renew anytime before " + fmtShort(iso(expiry)) + ".";
+  }
+  document.getElementById("renewBtn").href = "https://wa.me/" + WA_NUMBER + "?text=" +
+    encodeURIComponent("Hi Megasteel! I want to RENEW my " + PLAN_NAMES[profile.planMonths] + " membership. — " + profile.name);
+
+  /* this month */
+  const ym = todayISO().slice(0,7);
+  const monthLogs = logs.filter(l => l.date.slice(0,7) === ym);
+  const workouts = monthLogs.filter(l => l.type !== "Rest Day");
+  document.getElementById("mWorkouts").textContent = workouts.length;
+  document.getElementById("mMins").textContent = workouts.reduce((s,l) => s + (l.mins||0), 0);
+
+  /* streak — consecutive days with any entry, ending today or yesterday */
+  const dates = new Set(logs.map(l => l.date));
+  let streak = 0;
+  let cur = new Date();
+  if(!dates.has(iso(cur))) cur.setDate(cur.getDate() - 1);
+  while(dates.has(iso(cur))){ streak++; cur.setDate(cur.getDate() - 1); }
+  document.getElementById("mStreak").innerHTML = streak + "<i>🔥</i>";
+
+  /* weight delta */
+  const weighed = logs.filter(l => l.weight != null);
+  const startW = profile.startWeight != null ? profile.startWeight : (weighed.length ? weighed[0].weight : null);
+  const lastW = weighed.length ? weighed[weighed.length-1].weight : null;
+  document.getElementById("mWeight").textContent =
+    (startW != null && lastW != null) ? ((lastW - startW) > 0 ? "+" : "") + (lastW - startW).toFixed(1) : "—";
+
+  /* target */
+  const goal = profile.target;
+  document.getElementById("tDone").textContent = workouts.length;
+  document.getElementById("tGoal").textContent = goal;
+  const pct = Math.min(100, (workouts.length/goal)*100);
+  document.getElementById("tBar").style.width = pct + "%";
+  const tMsg = document.getElementById("tMsg");
+  const dayOfMonth = now.getDate();
+  const daysInMonth = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+  const expected = goal * (dayOfMonth/daysInMonth);
+  if(workouts.length >= goal){ tMsg.textContent = "🏆 TARGET SMASHED! Legend behaviour."; tMsg.className = "target-msg good"; }
+  else if(workouts.length >= expected){ tMsg.textContent = "✅ On track — keep showing up."; tMsg.className = "target-msg good"; }
+  else { tMsg.textContent = "⚡ Slightly behind — " + Math.ceil(expected - workouts.length) + " workout(s) to get back on pace."; tMsg.className = "target-msg push"; }
+
+  /* chart — last 14 days */
+  const chart = document.getElementById("chart");
+  chart.innerHTML = "";
+  const byDate = {};
+  logs.forEach(l => byDate[l.date] = l);
+  for(let i = 13; i >= 0; i--){
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const key = iso(d);
+    const entry = byDate[key];
+    const div = document.createElement("div");
+    let h = 3, cls = "cbar empty", title = fmtShort(key) + " — no entry";
+    if(entry){
+      if(entry.type === "Rest Day"){ cls = "cbar rest"; h = 22; title = fmtShort(key) + " — Rest day"; }
+      else { cls = "cbar"; h = Math.max(14, Math.min(100, (entry.mins/90)*100)); title = fmtShort(key) + " — " + entry.type + " · " + (entry.mins||0) + " min"; }
+    }
+    div.className = cls;
+    div.title = title;
+    div.innerHTML = '<i style="height:' + h + '%"></i><small>' + d.getDate() + '</small>';
+    chart.appendChild(div);
+  }
+
+  /* history */
+  const hist = document.getElementById("histArea");
+  const recent = logs.slice().reverse().slice(0, 10);
+  hist.innerHTML = recent.length ? "" : '<p style="color:var(--silver);font-size:13.5px">No entries yet — log your first workout above! 💪</p>';
+  recent.forEach(l => {
+    const d = fromISO(l.date);
+    const item = document.createElement("div");
+    item.className = "hist-item";
+    item.innerHTML =
+      '<div class="h-date"><b>' + d.getDate() + " " + MONTHS[d.getMonth()] + '</b><small>' + ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getDay()] + '</small></div>' +
+      '<div class="h-mid"><b>' + esc(l.type) + (l.type !== "Rest Day" ? " · " + (l.mins||0) + " min" : "") + (l.weight != null ? " · " + l.weight + " kg" : "") + '</b>' +
+      (l.note ? '<small>' + esc(l.note) + '</small>' : '') + '</div>' +
+      '<button class="h-del" title="Delete" onclick="deleteLog(\'' + l.date + '\')">🗑</button>';
+    hist.appendChild(item);
+  });
+}
+
+/* ═══════ BACKUP / RESET ═══════ */
+function download(name, content, type){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function backupJSON(){
+  download("megasteel-member-backup-" + todayISO() + ".json", JSON.stringify({profile, logs}, null, 2), "application/json");
+  toast("💾 BACKUP DOWNLOADED");
+}
+function restoreJSON(inp){
+  const file = inp.files[0];
+  if(!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if(!data.profile || !Array.isArray(data.logs)) throw 0;
+      profile = data.profile; logs = data.logs;
+      saveP(profile); saveL(logs);
+      render();
+      toast("📂 RESTORED");
+    } catch(e){ toast("⚠️ INVALID BACKUP FILE"); }
+  };
+  r.readAsText(file);
+  inp.value = "";
+}
+function resetAll(){
+  if(!confirm("Delete ALL your data (profile + workout history)? This cannot be undone.")) return;
+  localStorage.removeItem(P_KEY);
+  localStorage.removeItem(L_KEY);
+  profile = null; logs = [];
+  document.getElementById("profileForm").reset();
+  document.getElementById("setupTitle").textContent = "SET UP MEMBER ZONE";
+  render();
+}
+
+/* ═══════ INIT ═══════ */
+render();
+</script>
+</body>
+</html>

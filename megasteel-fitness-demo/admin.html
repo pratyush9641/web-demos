@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Manager — Megasteel Fitness</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%23101014'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='%23e6392e' font-family='Arial Black' font-weight='900'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0c0c10; --steel:#15151b; --steel-2:#1d1d25;
+    --red:#e6392e; --red-dark:#c22a20;
+    --silver:#9b9ba8; --line:rgba(255,255,255,.09);
+    --amber:#f5a623; --amber-bg:#2e2410;
+    --green:#2ecc71; --green-bg:#10291b;
+    --grey-bg:#22222b;
+    --wa:#25d366;
+    --shadow:0 14px 40px -12px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Barlow',system-ui,sans-serif;background:var(--black);color:#e9e9ee;line-height:1.55;min-height:100vh;font-size:15px}
+  button{font-family:inherit;cursor:pointer}
+  input,select,textarea{font-family:inherit}
+  .bebas{font-family:'Bebas Neue',sans-serif}
+
+  /* ── LOCK ── */
+  .lock{position:fixed;inset:0;z-index:2000;background:linear-gradient(140deg,var(--black),#1a0e0d);display:flex;align-items:center;justify-content:center;padding:20px}
+  .lock-card{background:var(--steel);border:1px solid var(--line);padding:46px 38px;max-width:380px;width:100%;text-align:center;box-shadow:var(--shadow)}
+  .lock-card .l-mark{width:70px;height:70px;background:var(--red);clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;margin:0 auto 18px}
+  .lock-card h1{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:2px}
+  .lock-card p{font-size:13px;color:var(--silver);margin-bottom:24px}
+  .lock-card input{width:100%;padding:15px;border:1px solid var(--line);background:var(--black);color:#fff;font-size:22px;text-align:center;letter-spacing:12px;margin-bottom:14px;border-radius:0}
+  .lock-card input:focus{outline:none;border-color:var(--red)}
+  .lock-card button{width:100%;padding:15px;border:none;background:var(--red);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2.5px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+  .lock-card button:hover{background:var(--red-dark)}
+  .lock-err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
+  .lock-hint{margin-top:16px;font-size:12px;color:var(--silver);background:var(--black);padding:9px;border:1px dashed var(--line)}
+  .lock-hint b{color:#fff}
+
+  /* ── HEADER ── */
+  header{background:var(--steel);border-bottom:1px solid var(--line);padding:20px}
+  .head-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .head-brand{display:flex;align-items:center;gap:13px}
+  .head-brand .hb-mark{width:46px;height:46px;background:var(--red);clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:25px;color:#fff}
+  .head-brand b{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:2px;display:block;line-height:1.15}
+  .head-brand small{font-size:11.5px;color:var(--silver);letter-spacing:1px;text-transform:uppercase}
+  .head-date{font-size:13px;color:var(--silver);text-align:right}
+  .head-date b{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;display:block;color:#fff}
+
+  .shell{max-width:1080px;margin:0 auto;padding:26px 20px 96px}
+
+  /* ── STATS ── */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--steel);border:1px solid var(--line);border-top:3px solid var(--red);padding:18px 20px}
+  .stat.s-amber{border-top-color:var(--amber)}
+  .stat.s-green{border-top-color:var(--green)}
+  .stat.s-white{border-top-color:#fff}
+  .stat b{font-family:'Bebas Neue',sans-serif;font-size:34px;display:block;line-height:1;color:#fff}
+  .stat span{font-size:11.5px;color:var(--silver);letter-spacing:1px;text-transform:uppercase}
+
+  /* ── TOOLBAR ── */
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+  .tabs{display:flex;background:var(--steel);border:1px solid var(--line);padding:4px;gap:2px;flex-wrap:wrap}
+  .tab{border:none;background:none;padding:9px 20px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1.5px;color:var(--silver);transition:.2s}
+  .tab.active{background:var(--red);color:#fff}
+  .search-box{flex:1;min-width:170px;position:relative}
+  .search-box input{width:100%;padding:12px 16px 12px 40px;border:1px solid var(--line);background:var(--steel);color:#fff;font-size:14px;border-radius:0}
+  .search-box input:focus{outline:none;border-color:var(--red)}
+  .search-box::before{content:"🔍";position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px}
+  .btn-add{border:none;background:var(--red);color:#fff;padding:12px 24px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:.2s}
+  .btn-add:hover{background:var(--red-dark)}
+
+  /* ── GROUPS & CARDS ── */
+  .dgroup{margin-bottom:26px}
+  .dhead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .dhead .d-label{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px}
+  .dhead .d-label.today{color:var(--red)}
+  .dhead .d-count{background:var(--steel-2);border:1px solid var(--line);color:var(--silver);font-size:11px;font-weight:600;padding:3px 12px}
+  .dhead .d-line{flex:1;height:1px;background:var(--line)}
+  .apt{background:var(--steel);border:1px solid var(--line);padding:16px 18px;margin-bottom:12px;display:grid;grid-template-columns:86px 1fr auto;gap:16px;align-items:center;transition:.2s}
+  .apt:hover{border-color:var(--red)}
+  .apt.done-look{opacity:.55}
+  .apt-time{text-align:center;background:var(--black);border:1px solid var(--line);padding:10px 6px}
+  .apt-time b{font-family:'Bebas Neue',sans-serif;font-size:19px;display:block;line-height:1.1;color:var(--red)}
+  .apt-time small{font-size:10px;color:var(--silver);text-transform:uppercase;letter-spacing:1px}
+  .apt-mid{min-width:0}
+  .apt-name{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap;color:#fff}
+  .badge{font-size:10px;font-weight:700;padding:3px 11px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+  .b-new{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(245,166,35,.35)}
+  .b-trial{background:#2a1210;color:var(--red);border:1px solid rgba(230,57,46,.4)}
+  .b-joined{background:var(--green-bg);color:var(--green);border:1px solid rgba(46,204,113,.35)}
+  .b-lost{background:var(--grey-bg);color:var(--silver);border:1px solid var(--line)}
+  .apt-info{font-size:13px;color:var(--silver);margin-top:3px;display:flex;gap:14px;flex-wrap:wrap}
+  .apt-note{font-size:12.5px;color:var(--silver);background:var(--black);border:1px dashed var(--line);padding:6px 11px;margin-top:8px;display:inline-block}
+  .apt-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+  .act{border:1px solid var(--line);width:38px;height:38px;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.18s;background:var(--black);color:#fff}
+  .act:hover{border-color:var(--red);transform:translateY(-2px)}
+  .act.a-wa{border-color:rgba(37,211,102,.4)}
+  @media(max-width:640px){
+    .apt{grid-template-columns:70px 1fr}
+    .apt-actions{grid-column:1 / -1;justify-content:flex-start;border-top:1px dashed var(--line);padding-top:11px}
+  }
+  .empty{background:var(--steel);border:1px dashed var(--line);padding:54px 24px;text-align:center}
+  .empty .e-ico{font-size:48px;margin-bottom:12px}
+  .empty b{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;display:block;margin-bottom:6px;color:#fff}
+  .empty p{font-size:13.5px;color:var(--silver)}
+
+  /* ── MODAL ── */
+  .modal-bg{position:fixed;inset:0;z-index:1500;background:rgba(0,0,0,.7);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{background:var(--steel);border:1px solid var(--line);padding:34px;max-width:530px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:var(--shadow)}
+  .modal h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:22px;color:#fff}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+  .field label{display:block;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:1.8px;margin-bottom:7px;color:var(--silver)}
+  .field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:var(--black);color:#fff;font-size:14.5px;border-radius:0}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red)}
+  .field select option{background:var(--steel)}
+  .field input[type="date"],.field input[type="time"]{color-scheme:dark}
+  .modal-btns{display:flex;gap:12px;margin-top:22px}
+  .modal-btns button{flex:1;padding:14px;border:none;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px}
+  .m-save{background:var(--red);color:#fff}
+  .m-save:hover{background:var(--red-dark)}
+  .m-cancel{background:var(--steel-2);color:#fff;border:1px solid var(--line)}
+
+  /* ── FOOT TOOLS ── */
+  .foot-tools{position:fixed;bottom:0;left:0;right:0;background:var(--steel);border-top:1px solid var(--line);padding:11px 20px;z-index:800}
+  .ft-in{max-width:1080px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .ft-left{display:flex;gap:10px;flex-wrap:wrap}
+  .ft-btn{border:1px solid var(--line);background:var(--black);padding:8px 16px;font-size:12.5px;font-weight:500;color:var(--silver);transition:.2s}
+  .ft-btn:hover{border-color:var(--red);color:#fff}
+  .ft-note{font-size:11.5px;color:var(--silver)}
+
+  .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);z-index:2500;background:var(--red);color:#fff;padding:13px 26px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;box-shadow:var(--shadow);transition:.35s;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOCK ═══════ -->
+<div class="lock" id="lockScreen">
+  <div class="lock-card">
+    <div class="l-mark">M</div>
+    <h1>MEGASTEEL FITNESS</h1>
+    <p>Lead Manager — staff only</p>
+    <input type="password" id="pinInput" maxlength="4" inputmode="numeric" placeholder="••••" autocomplete="off">
+    <button onclick="tryUnlock()">UNLOCK</button>
+    <div class="lock-err" id="lockErr"></div>
+    <div class="lock-hint">🔑 Demo PIN: <b>1234</b> · (changed for the gym before delivery)</div>
+  </div>
+</div>
+
+<!-- ═══════ HEADER ═══════ -->
+<header>
+  <div class="head-in">
+    <div class="head-brand">
+      <span class="hb-mark">M</span>
+      <span><b>MEGASTEEL FITNESS</b><small>Lead Manager</small></span>
+    </div>
+    <div class="head-date"><small>Today</small><b id="todayLabel"></b></div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- ═══════ STATS ═══════ -->
+  <div class="stats">
+    <div class="stat s-amber"><b id="stNew">0</b><span>New Leads</span></div>
+    <div class="stat"><b id="stTrials">0</b><span>Trials Upcoming</span></div>
+    <div class="stat s-white"><b id="stFollow">0</b><span>Follow-ups Today</span></div>
+    <div class="stat s-green"><b id="stJoined">0</b><span>Members Joined</span></div>
+  </div>
+
+  <!-- ═══════ TOOLBAR ═══════ -->
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-view="today">TODAY</button>
+      <button class="tab" data-view="upcoming">UPCOMING</button>
+      <button class="tab" data-view="all">ALL</button>
+      <button class="tab" data-view="joined">JOINED</button>
+    </div>
+    <div class="search-box"><input type="text" id="searchInput" placeholder="Search name or phone..."></div>
+    <button class="btn-add" onclick="openModal()">➕ NEW LEAD</button>
+  </div>
+
+  <!-- ═══════ LIST ═══════ -->
+  <div id="listArea"></div>
+</div>
+
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2 id="modalTitle">➕ NEW LEAD</h2>
+    <form id="aptForm">
+      <input type="hidden" id="fId">
+      <div class="form-row">
+        <div class="field"><label>NAME *</label><input type="text" id="fName" required placeholder="e.g. Rahul Sen"></div>
+        <div class="field"><label>PHONE *</label><input type="tel" id="fPhone" required placeholder="e.g. 9830012345"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>GOAL / INTEREST</label>
+          <select id="fService">
+            <option>Weight Loss</option><option>Muscle Building</option>
+            <option>Strength Training</option><option>General Fitness</option>
+            <option>Personal Training</option><option>Membership Renewal</option>
+          </select>
+        </div>
+        <div class="field"><label>SOURCE</label>
+          <select id="fSource">
+            <option>Website</option><option>WhatsApp</option><option>Walk-in</option>
+            <option>Google</option><option>Instagram</option><option>Referral</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>FOLLOW-UP / TRIAL DATE *</label><input type="date" id="fDate" required></div>
+        <div class="field"><label>TIME *</label><input type="time" id="fTime" required></div>
+      </div>
+      <div class="field"><label>STATUS</label>
+        <select id="fStatus">
+          <option value="new">🆕 New Lead</option>
+          <option value="trial">🔥 Trial Booked</option>
+          <option value="joined">💪 Joined</option>
+          <option value="lost">✖ Not Interested</option>
+        </select>
+      </div>
+      <div class="field" style="margin-top:14px"><label>NOTE (OPTIONAL)</label><textarea id="fNote" rows="2" placeholder="e.g. asked about quarterly plan / friend of member"></textarea></div>
+      <div class="modal-btns">
+        <button type="button" class="m-cancel" onclick="closeModal()">CANCEL</button>
+        <button type="submit" class="m-save">💾 SAVE LEAD</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════ FOOT TOOLS ═══════ -->
+<div class="foot-tools">
+  <div class="ft-in">
+    <div class="ft-left">
+      <button class="ft-btn" onclick="exportCSV()">📊 Export Excel (CSV)</button>
+      <button class="ft-btn" onclick="backupJSON()">💾 Backup</button>
+      <button class="ft-btn" onclick="document.getElementById('restoreFile').click()">📂 Restore</button>
+      <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreJSON(this)">
+      <button class="ft-btn" onclick="resetDemo()">🔄 Load Demo Data</button>
+    </div>
+    <span class="ft-note">💡 Data is saved on this device — take a Backup every week</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════ CONFIG ═══════ */
+const PIN = "1234";                 // change before delivering to the gym
+const STORE_KEY = "ms_leads";
+const GYM_NAME = "Megasteel Fitness";
+const GYM_ADDR = "CK-57, 2nd Floor, Salt Lake";
+
+/* ═══════ LOCK ═══════ */
+function tryUnlock(){
+  const v = document.getElementById("pinInput").value;
+  if(v === PIN){
+    sessionStorage.setItem("ms_unlocked","1");
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    document.getElementById("lockErr").textContent = "Wrong PIN — try again";
+    document.getElementById("pinInput").value = "";
+  }
+}
+document.getElementById("pinInput").addEventListener("keydown", e => { if(e.key === "Enter") tryUnlock(); });
+if(sessionStorage.getItem("ms_unlocked") === "1") document.getElementById("lockScreen").style.display = "none";
+
+/* ═══════ DATA ═══════ */
+function load(){ try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch(e){ return []; } }
+function save(list){ localStorage.setItem(STORE_KEY, JSON.stringify(list)); }
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function todayStr(offset){
+  const d = new Date();
+  d.setDate(d.getDate() + (offset || 0));
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function seedDemo(){
+  const demo = [
+    {id:uid(), name:"Rahul Sen",      phone:"9830011111", service:"Muscle Building",   source:"Website",   date:todayStr(0),  time:"07:00", status:"trial",  note:"Free trial — morning slot"},
+    {id:uid(), name:"Priya Sharma",   phone:"9830022222", service:"Weight Loss",       source:"Instagram", date:todayStr(0),  time:"18:00", status:"new",    note:"Asked about quarterly plan"},
+    {id:uid(), name:"Amit Dutta",     phone:"9830033333", service:"Personal Training", source:"Walk-in",   date:todayStr(0),  time:"19:30", status:"trial",  note:""},
+    {id:uid(), name:"Sneha Bose",     phone:"9830044444", service:"General Fitness",   source:"Google",    date:todayStr(1),  time:"07:30", status:"new",    note:"Wants ladies timing info"},
+    {id:uid(), name:"Arjun Ghosh",    phone:"9830055555", service:"Strength Training", source:"Referral",  date:todayStr(2),  time:"18:30", status:"trial",  note:"Friend of member Suresh"},
+    {id:uid(), name:"Vikram Rao",     phone:"9830066666", service:"Weight Loss",       source:"WhatsApp",  date:todayStr(-2), time:"18:00", status:"joined", note:"Took QUARTERLY plan 💪"},
+    {id:uid(), name:"Mita Chatterjee",phone:"9830077777", service:"General Fitness",   source:"Website",   date:todayStr(-1), time:"10:00", status:"joined", note:"Monthly plan"},
+    {id:uid(), name:"Suresh Kumar",   phone:"9830088888", service:"Muscle Building",   source:"Walk-in",   date:todayStr(-3), time:"19:00", status:"lost",   note:"Joined gym near office instead"}
+  ];
+  save(demo);
+  return demo;
+}
+let leads = load();
+if(leads.length === 0) leads = seedDemo();
+
+/* ═══════ HELPERS ═══════ */
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function fmtDate(iso){
+  const [y,m,d] = iso.split("-").map(Number);
+  const dt = new Date(y, m-1, d);
+  return DAYS[dt.getDay()] + ", " + d + " " + MONTHS[m-1] + " " + y;
+}
+function dateTag(iso){
+  if(iso === todayStr(0)) return "Today";
+  if(iso === todayStr(1)) return "Tomorrow";
+  if(iso === todayStr(-1)) return "Yesterday";
+  return "";
+}
+function fmtTime(t){
+  let [h,m] = t.split(":").map(Number);
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+  return h + ":" + String(m).padStart(2,"0") + " " + ap;
+}
+function cleanPhone(p){
+  let d = p.replace(/\D/g,"");
+  if(d.length === 10) d = "91" + d;
+  return d;
+}
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+/* ═══════ STATS ═══════ */
+function renderStats(){
+  const today = todayStr(0);
+  document.getElementById("stNew").textContent    = leads.filter(l => l.status === "new").length;
+  document.getElementById("stTrials").textContent = leads.filter(l => l.status === "trial" && l.date >= today).length;
+  document.getElementById("stFollow").textContent = leads.filter(l => l.date === today && (l.status === "new" || l.status === "trial")).length;
+  document.getElementById("stJoined").textContent = leads.filter(l => l.status === "joined").length;
+}
+
+/* ═══════ LIST ═══════ */
+let view = "today", query = "";
+const BADGE = {new:["b-new","🆕 New"], trial:["b-trial","🔥 Trial"], joined:["b-joined","💪 Joined"], lost:["b-lost","✖ Lost"]};
+
+function filtered(){
+  const today = todayStr(0);
+  let list = leads.slice();
+  if(view === "today")    list = list.filter(l => l.date === today && l.status !== "lost");
+  if(view === "upcoming") list = list.filter(l => l.date > today && l.status !== "lost" && l.status !== "joined");
+  if(view === "joined")   list = list.filter(l => l.status === "joined");
+  if(query) list = list.filter(l => (l.name + " " + l.phone).toLowerCase().includes(query));
+  list.sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time));
+  if(view === "joined") list.reverse();
+  return list;
+}
+
+function render(){
+  renderStats();
+  const area = document.getElementById("listArea");
+  const list = filtered();
+  if(list.length === 0){
+    const msgs = {
+      today:["🌅","NO FOLLOW-UPS TODAY","New enquiries from WhatsApp can be added with ➕ NEW LEAD."],
+      upcoming:["📆","NOTHING SCHEDULED AHEAD","Add trials and follow-ups with the ➕ button."],
+      all:["📋","NO LEADS YET","Tap ➕ NEW LEAD to add your first one."],
+      joined:["💪","NO MEMBERS YET","Leads marked as Joined will appear here."]
+    };
+    const m = msgs[view];
+    area.innerHTML = '<div class="empty"><div class="e-ico">' + m[0] + '</div><b>' + m[1] + '</b><p>' + m[2] + '</p></div>';
+    return;
+  }
+  const groups = {};
+  list.forEach(l => { (groups[l.date] = groups[l.date] || []).push(l); });
+  let html = "";
+  Object.keys(groups).forEach(date => {
+    const tag = dateTag(date);
+    html += '<div class="dgroup"><div class="dhead">' +
+      '<span class="d-label' + (tag === "Today" ? " today" : "") + '">' + (tag ? tag + " · " : "") + fmtDate(date) + '</span>' +
+      '<span class="d-count">' + groups[date].length + ' lead' + (groups[date].length > 1 ? 's' : '') + '</span>' +
+      '<span class="d-line"></span></div>';
+    groups[date].forEach(l => {
+      const [bCls, bTxt] = BADGE[l.status];
+      const doneLook = (l.status === "joined" || l.status === "lost") ? " done-look" : "";
+      const waMsg = encodeURIComponent(
+        l.status === "trial"
+        ? "Hi " + l.name + "! 🔥 Your FREE trial at " + GYM_NAME + " is booked for " + fmtDate(l.date) + " at " + fmtTime(l.time) + ". Address: " + GYM_ADDR + ". Wear comfortable clothes & carry a water bottle. See you! 💪"
+        : "Hi " + l.name + "! This is " + GYM_NAME + " (" + GYM_ADDR + "). Thanks for your interest in " + l.service + " — when can we book your FREE trial workout? 💪"
+      );
+      html += '<div class="apt' + doneLook + '">' +
+        '<div class="apt-time"><b>' + fmtTime(l.time).split(" ")[0] + '</b><small>' + fmtTime(l.time).split(" ")[1] + '</small></div>' +
+        '<div class="apt-mid">' +
+          '<div class="apt-name">' + esc(l.name) + ' <span class="badge ' + bCls + '">' + bTxt + '</span></div>' +
+          '<div class="apt-info"><span>🎯 ' + esc(l.service) + '</span><span>📞 ' + esc(l.phone) + '</span><span>📣 ' + esc(l.source || "") + '</span></div>' +
+          (l.note ? '<div class="apt-note">📝 ' + esc(l.note) + '</div>' : '') +
+        '</div>' +
+        '<div class="apt-actions">' +
+          '<a class="act a-wa" title="WhatsApp this lead" href="https://wa.me/' + cleanPhone(l.phone) + '?text=' + waMsg + '" target="_blank" rel="noopener">💬</a>' +
+          '<a class="act" title="Call" href="tel:+' + cleanPhone(l.phone) + '">📞</a>' +
+          (l.status === "new" ? '<button class="act" title="Mark Trial Booked" onclick="setStatus(\'' + l.id + '\',\'trial\')">🔥</button>' : '') +
+          (l.status !== "joined" && l.status !== "lost" ? '<button class="act" title="Mark Joined" onclick="setStatus(\'' + l.id + '\',\'joined\')">💪</button>' : '') +
+          (l.status !== "lost" && l.status !== "joined" ? '<button class="act" title="Mark Not Interested" onclick="setStatus(\'' + l.id + '\',\'lost\')">✖</button>' : '') +
+          '<button class="act" title="Edit" onclick="openModal(\'' + l.id + '\')">✏️</button>' +
+          '<button class="act" title="Delete permanently" onclick="removeLead(\'' + l.id + '\')">🗑️</button>' +
+        '</div></div>';
+    });
+    html += '</div>';
+  });
+  area.innerHTML = html;
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* ═══════ ACTIONS ═══════ */
+function setStatus(id, st){
+  const l = leads.find(x => x.id === id);
+  if(!l) return;
+  l.status = st;
+  save(leads); render();
+  toast(st === "trial" ? "🔥 TRIAL BOOKED" : st === "joined" ? "💪 NEW MEMBER!" : "✖ MARKED NOT INTERESTED");
+}
+function removeLead(id){
+  if(!confirm("Delete this lead permanently?")) return;
+  leads = leads.filter(x => x.id !== id);
+  save(leads); render();
+  toast("🗑️ DELETED");
+}
+
+/* ═══════ MODAL ═══════ */
+function openModal(id){
+  document.getElementById("modalBg").classList.add("open");
+  document.getElementById("aptForm").reset();
+  document.getElementById("fId").value = "";
+  document.getElementById("modalTitle").textContent = "➕ NEW LEAD";
+  document.getElementById("fDate").value = todayStr(0);
+  if(id){
+    const l = leads.find(x => x.id === id);
+    if(l){
+      document.getElementById("modalTitle").textContent = "✏️ EDIT LEAD";
+      document.getElementById("fId").value = l.id;
+      document.getElementById("fName").value = l.name;
+      document.getElementById("fPhone").value = l.phone;
+      document.getElementById("fDate").value = l.date;
+      document.getElementById("fTime").value = l.time;
+      document.getElementById("fService").value = l.service;
+      document.getElementById("fSource").value = l.source || "Website";
+      document.getElementById("fStatus").value = l.status;
+      document.getElementById("fNote").value = l.note || "";
+    }
+  }
+}
+function closeModal(){ document.getElementById("modalBg").classList.remove("open"); }
+document.getElementById("modalBg").addEventListener("click", e => { if(e.target.id === "modalBg") closeModal(); });
+
+document.getElementById("aptForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const id = document.getElementById("fId").value;
+  const data = {
+    name: document.getElementById("fName").value.trim(),
+    phone: document.getElementById("fPhone").value.trim(),
+    date: document.getElementById("fDate").value,
+    time: document.getElementById("fTime").value,
+    service: document.getElementById("fService").value,
+    source: document.getElementById("fSource").value,
+    status: document.getElementById("fStatus").value,
+    note: document.getElementById("fNote").value.trim()
+  };
+  if(id){
+    Object.assign(leads.find(x => x.id === id), data);
+    toast("✏️ LEAD UPDATED");
+  } else {
+    leads.push(Object.assign({id: uid()}, data));
+    toast("✅ LEAD ADDED");
+  }
+  save(leads); closeModal(); render();
+});
+
+/* ═══════ TABS + SEARCH ═══════ */
+document.getElementById("tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if(!t) return;
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  view = t.dataset.view;
+  render();
+});
+document.getElementById("searchInput").addEventListener("input", e => {
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
+/* ═══════ EXPORT / BACKUP ═══════ */
+function download(name, content, type){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function exportCSV(){
+  let csv = "Date,Time,Name,Phone,Goal,Source,Status,Note\n";
+  leads.slice().sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time)).forEach(l => {
+    csv += [l.date, l.time, l.name, l.phone, l.service, l.source || "", l.status, (l.note || "").replace(/[,\n]/g," ")].map(v => '"' + v + '"').join(",") + "\n";
+  });
+  download("megasteel-leads-" + todayStr(0) + ".csv", csv, "text/csv");
+  toast("📊 EXPORTED");
+}
+function backupJSON(){
+  download("megasteel-leads-backup-" + todayStr(0) + ".json", JSON.stringify(leads, null, 2), "application/json");
+  toast("💾 BACKUP DOWNLOADED");
+}
+function restoreJSON(inp){
+  const file = inp.files[0];
+  if(!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if(!Array.isArray(data)) throw 0;
+      leads = data;
+      save(leads); render();
+      toast("📂 RESTORED — " + data.length + " LEADS");
+    } catch(e){ toast("⚠️ INVALID BACKUP FILE"); }
+  };
+  r.readAsText(file);
+  inp.value = "";
+}
+function resetDemo(){
+  if(!confirm("Replace current data with fresh demo data?")) return;
+  leads = seedDemo();
+  render();
+  toast("🔄 DEMO DATA LOADED");
+}
+
+/* ═══════ INIT ═══════ */
+document.getElementById("todayLabel").textContent = fmtDate(todayStr(0));
+render();
+</script>
+</body>
+</html>

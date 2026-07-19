@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Plum — Multi-Cuisine Fine Dining, Salt Lake Kolkata | Reservations</title>
+<meta name="description" content="Blue Plum — Kolkata's newest fine dining destination in Sector 2, Salt Lake. North Indian, Continental, Oriental & Italian cuisine in an elegant setting. 4.3★ · 495+ reviews. Reserve on WhatsApp: 079805 35815">
+<meta name="keywords" content="fine dining salt lake, best restaurant salt lake kolkata, multi cuisine restaurant sector 2, romantic restaurant kolkata, restaurant reservation salt lake">
+<meta property="og:title" content="Blue Plum — Multi-Cuisine Fine Dining, Salt Lake Kolkata">
+<meta property="og:description" content="4.3★ rated · 495+ reviews. Reserve your table on WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0b09'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='%23c9973e'>❋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#0c0b09; --charcoal:#17140f; --charcoal-2:#1f1b14;
+    --cream:#f4efe4; --cream-dim:#c9c0ab;
+    --gold:#c9973e; --gold-bright:#e0b563; --gold-soft:rgba(201,151,62,.14);
+    --emerald:#1f4d3d; --emerald-bright:#2e7d5b;
+    --ink:#211c14; --grey:#7a7263;
+    --wa:#25d366;
+    --shadow-lg:0 30px 70px -16px rgba(0,0,0,.6);
+    --shadow-md:0 14px 36px -10px rgba(0,0,0,.45);
+    --shadow-sm:0 4px 16px rgba(0,0,0,.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Outfit',sans-serif;font-weight:300;background:var(--noir);color:var(--cream);line-height:1.7;overflow-x:hidden;font-size:15.5px}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  ::selection{background:var(--gold);color:#0c0b09}
+  .disp{font-family:'Playfair Display',serif}
+  .disp em{font-style:italic;font-weight:500;color:var(--gold-bright)}
+
+  .kicker{font-size:11px;font-weight:500;letter-spacing:4.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:16px;margin-bottom:16px}
+  .kicker::before{content:"";width:38px;height:1px;background:var(--gold)}
+  .kicker.centered{justify-content:center}
+  .kicker.centered::after{content:"";width:38px;height:1px;background:var(--gold)}
+
+  section{padding:110px 20px}
+  .wrap{max-width:1160px;margin:0 auto}
+  .center{text-align:center}
+  h2.sec-title{font-size:clamp(32px,4.6vw,54px);font-weight:600;line-height:1.16;margin-bottom:16px}
+  p.sec-sub{color:var(--cream-dim);font-size:16px;max-width:560px;font-weight:300}
+  .center p.sec-sub{margin:0 auto}
+
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 34px;font-size:12.5px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;border:none;transition:.35s;font-family:'Outfit',sans-serif}
+  .btn-gold{background:var(--gold);color:#1a1206}
+  .btn-gold:hover{background:var(--gold-bright);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px rgba(244,239,228,.35)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold-bright)}
+  .btn-wa{background:var(--wa);color:#fff}
+  .btn-wa:hover{background:#1fb457;transform:translateY(-2px)}
+
+  /* ═══ NAV ═══ */
+  nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:24px 32px;transition:.4s;display:flex;align-items:center;justify-content:space-between}
+  nav.scrolled{background:rgba(12,11,9,.95);backdrop-filter:blur(14px);padding:14px 32px;box-shadow:0 1px 0 rgba(201,151,62,.16)}
+  .nav-logo{display:flex;align-items:center;gap:12px}
+  .nav-logo .mark{width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:17px}
+  .nav-logo b{font-family:'Playfair Display',serif;font-size:23px;font-weight:600;letter-spacing:1px;display:block;line-height:1}
+  .nav-logo small{font-size:8.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--cream-dim)}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{color:var(--cream-dim);font-size:11px;letter-spacing:2.2px;text-transform:uppercase;font-weight:400;position:relative;padding:4px 0;transition:.3s}
+  .nav-links a:not(.nav-cta):hover{color:var(--gold-bright)}
+  .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:.4s}
+  .nav-links a:not(.nav-cta):hover::after{width:100%}
+  .nav-cta{border:1px solid var(--gold);color:var(--gold-bright) !important;padding:10px 22px}
+  .nav-cta:hover{background:var(--gold);color:#1a1206 !important}
+  .menu-btn{display:none;background:none;border:none;color:var(--cream);font-size:23px;cursor:pointer}
+  @media(max-width:940px){
+    nav{padding:18px 20px}
+    nav.scrolled{padding:14px 20px}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(12,11,9,.98);flex-direction:column;padding:30px;gap:22px}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+  }
+
+  /* ═══ HERO ═══ */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;animation:zoom 24s ease-out forwards}
+  @keyframes zoom{from{transform:scale(1.13)}to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,9,.6) 0%,rgba(12,11,9,.3) 40%,rgba(12,11,9,.92) 100%)}
+  .hero-in{position:relative;z-index:2;padding:150px 24px 100px;max-width:860px}
+  .hero .est{font-size:10.5px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-bright);margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:18px}
+  .hero .est::before,.hero .est::after{content:"";width:48px;height:1px;background:rgba(201,151,62,.5)}
+  .hero h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(42px,7.8vw,92px);line-height:1.06;color:var(--cream);margin-bottom:26px}
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--gold-bright)}
+  .hero p.sub{color:var(--cream-dim);font-size:15.5px;font-weight:200;max-width:480px;margin:0 auto 42px;letter-spacing:.4px}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:50px}
+  .hero-rating{display:flex;justify-content:center;gap:26px;flex-wrap:wrap}
+  .hr-item{text-align:center}
+  .hr-item b{display:block;font-family:'Playfair Display',serif;font-size:24px;color:var(--gold-bright)}
+  .hr-item span{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cream-dim)}
+  .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:var(--cream-dim);font-size:9.5px;letter-spacing:4px;text-transform:uppercase}
+  .hero-scroll::after{content:"";display:block;width:1px;height:42px;background:linear-gradient(var(--gold),transparent);margin:12px auto 0}
+
+  /* ═══ TICKER ═══ */
+  .ticker{background:var(--charcoal);border-top:1px solid rgba(201,151,62,.18);border-bottom:1px solid rgba(201,151,62,.18);overflow:hidden;padding:16px 0}
+  .ticker-track{display:flex;width:max-content;animation:scroll 32s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ticker span{font-family:'Playfair Display',serif;font-size:14.5px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-bright);padding:0 30px;white-space:nowrap}
+  .ticker i{font-style:normal;color:rgba(201,151,62,.45)}
+
+  /* ═══ STORY ═══ */
+  .story{background:var(--noir)}
+  .story-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  @media(max-width:900px){.story-in{grid-template-columns:1fr;gap:46px}}
+  .story-photo{position:relative}
+  .story-photo .main-img{width:100%;aspect-ratio:4/4.7;object-fit:cover;box-shadow:var(--shadow-lg)}
+  .story-badge{position:absolute;bottom:-24px;left:-20px;background:var(--gold);color:#1a1206;padding:22px 28px;text-align:center;box-shadow:var(--shadow-md)}
+  .story-badge b{font-family:'Playfair Display',serif;font-size:32px;display:block;line-height:1}
+  .story-badge small{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600}
+  @media(max-width:900px){.story-badge{left:8px}}
+  .story-text p{color:var(--cream-dim);margin-bottom:18px;font-size:15.5px;font-weight:300}
+  .story-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(201,151,62,.2);margin-top:30px;padding-top:26px}
+  .story-stats>div+div{border-left:1px solid rgba(201,151,62,.2);padding-left:22px}
+  .story-stats b{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,34px);color:var(--gold-bright);display:block;line-height:1}
+  .story-stats span{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream-dim)}
+
+  /* ═══ MENU ═══ */
+  .menu-sec{background:var(--charcoal)}
+  .menu-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:40px 0 54px}
+  .mtab{background:transparent;border:1px solid rgba(201,151,62,.3);color:var(--cream-dim);padding:11px 26px;font-size:11.5px;letter-spacing:2px;text-transform:uppercase;transition:.3s;font-family:'Outfit',sans-serif}
+  .mtab.active,.mtab:hover{background:var(--gold);border-color:var(--gold);color:#1a1206}
+  .dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:920px){.dish-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.dish-grid{grid-template-columns:1fr}}
+  .dish-cat{display:none}
+  .dish-cat.active{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:920px){.dish-cat.active{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.dish-cat.active{grid-template-columns:1fr}}
+  .dish{background:var(--noir);border:1px solid rgba(201,151,62,.15);overflow:hidden;transition:.35s}
+  .dish:hover{transform:translateY(-6px);border-color:var(--gold)}
+  .dish .d-img{aspect-ratio:4/3;overflow:hidden;position:relative}
+  .dish .d-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+  .dish:hover .d-img img{transform:scale(1.08)}
+  .dish .d-tag{position:absolute;top:14px;left:14px;background:var(--gold);color:#1a1206;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 13px}
+  .dish .d-body{padding:20px 22px 24px}
+  .dish-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+  .dish h4{font-family:'Playfair Display',serif;font-size:19px;font-weight:600}
+  .dish .price{color:var(--gold-bright);font-family:'Playfair Display',serif;font-size:17px;white-space:nowrap}
+  .dish p{font-size:13px;color:var(--cream-dim);font-weight:300}
+  .menu-note{text-align:center;color:var(--cream-dim);font-size:12.5px;margin-top:40px}
+  .menu-note a{color:var(--gold-bright);border-bottom:1px solid rgba(201,151,62,.5)}
+
+  /* ═══ AMBIENCE GALLERY ═══ */
+  .gallery{background:var(--noir);padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .g-item{position:relative;overflow:hidden;aspect-ratio:3/3.7}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:1s ease;opacity:.85}
+  .g-item:hover img{transform:scale(1.08);opacity:1}
+  .g-item span{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 18px;background:linear-gradient(transparent,rgba(12,11,9,.92));color:var(--gold-bright);font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.5s}
+  .g-item:hover span{opacity:1;transform:none}
+
+  /* ═══ EXPERIENCE STRIP ═══ */
+  .experience{background:var(--charcoal)}
+  .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,151,62,.18);margin-top:54px}
+  @media(max-width:820px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
+  .exp-item{background:var(--charcoal);padding:40px 30px;text-align:center}
+  .exp-item .e-ico{font-size:30px;color:var(--gold-bright);margin-bottom:16px;display:block}
+  .exp-item h3{font-family:'Playfair Display',serif;font-size:19px;margin-bottom:8px}
+  .exp-item p{font-size:13px;color:var(--cream-dim);font-weight:300}
+
+  /* ═══ QUOTE ═══ */
+  .quote-sec{background:var(--noir);text-align:center}
+  .quote-sec .mark{font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);line-height:.5;display:block;margin-bottom:32px}
+  .quote-slide{max-width:820px;margin:0 auto;min-height:180px}
+  .quote-slide blockquote{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:clamp(21px,3vw,30px);line-height:1.55;color:var(--cream);transition:opacity .8s}
+  .quote-slide .attr{margin-top:26px;font-size:10.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--cream-dim)}
+  .quote-slide .attr b{color:var(--gold-bright);font-weight:500}
+  .q-dots{display:flex;gap:11px;justify-content:center;margin-top:42px}
+  .q-dot{width:24px;height:1.5px;background:rgba(244,239,228,.2);border:none;cursor:pointer;transition:.4s;padding:0}
+  .q-dot.on{background:var(--gold);width:42px}
+
+  /* ═══ RESERVE ═══ */
+  .reserve{background:
+    radial-gradient(700px 420px at 90% 0%,rgba(201,151,62,.14),transparent 55%),
+    var(--charcoal)}
+  .reserve-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:70px;align-items:center}
+  @media(max-width:900px){.reserve-in{grid-template-columns:1fr;gap:44px}}
+  .reserve h2{font-size:clamp(32px,4.4vw,50px);margin-bottom:20px}
+  .reserve .r-sub{color:var(--cream-dim);margin-bottom:36px;max-width:440px;font-weight:300}
+  .r-perk{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start}
+  .r-perk .p-mark{width:42px;height:42px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold-bright);font-size:16px;flex-shrink:0}
+  .r-perk b{display:block;font-family:'Playfair Display',serif;font-size:16px;color:var(--cream)}
+  .r-perk p{font-size:13px;color:var(--cream-dim);font-weight:300}
+  .res-card{background:var(--noir);border:1px solid rgba(201,151,62,.25);padding:40px;box-shadow:var(--shadow-lg)}
+  .res-card h3{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:24px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+  @media(max-width:560px){.form-row{grid-template-columns:1fr}}
+  .rfield label{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-bright);margin-bottom:9px}
+  .rfield input,.rfield select,.rfield textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(244,239,228,.25);padding:9px 2px;font-family:'Outfit',sans-serif;font-weight:300;font-size:15.5px;color:var(--cream);transition:.35s;border-radius:0}
+  .rfield select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='7'><path d='M1 1l4.5 4.5L10 1' stroke='%23c9973e' fill='none' stroke-width='1.4'/></svg>");background-repeat:no-repeat;background-position:right 4px center;cursor:pointer}
+  .rfield select option{background:var(--charcoal);color:var(--cream)}
+  .rfield input::placeholder{color:rgba(244,239,228,.32)}
+  .rfield input:focus,.rfield select:focus,.rfield textarea:focus{outline:none;border-bottom-color:var(--gold)}
+  .rfield input[type="date"],.rfield input[type="time"]{color-scheme:dark}
+  .res-note{font-size:11.5px;color:var(--cream-dim);margin-top:18px;text-align:center}
+
+  /* ═══ HOURS ═══ */
+  .hours{background:var(--noir)}
+  .hours-card{max-width:720px;margin:48px auto 0;border:1px solid rgba(201,151,62,.22)}
+  .hours-card table{width:100%;border-collapse:collapse;font-size:14.5px}
+  .hours-card th{background:var(--charcoal);color:var(--gold-bright);font-family:'Playfair Display',serif;font-weight:600;padding:16px 24px;text-align:left;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+  .hours-card td{padding:15px 24px;border-bottom:1px solid rgba(201,151,62,.14);color:var(--cream-dim)}
+  .hours-card tr:last-child td{border-bottom:none}
+  .hours-card td b{font-family:'Playfair Display',serif;color:var(--cream);font-weight:600}
+  .hours-note{text-align:center;font-size:12.5px;color:var(--cream-dim);margin-top:18px}
+
+  /* ═══ VISIT ═══ */
+  .visit{background:var(--charcoal)}
+  .visit-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+  @media(max-width:880px){.visit-in{grid-template-columns:1fr;gap:44px}}
+  .v-lines{display:grid;gap:26px;margin-top:30px}
+  .v-lines>div{border-left:1px solid rgba(201,151,62,.4);padding-left:24px}
+  .v-lines dt{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-bright);margin-bottom:6px}
+  .v-lines dd{font-size:15px;color:var(--cream);font-weight:300}
+  .v-lines dd small{color:var(--cream-dim);display:block;font-size:13px;margin-top:2px}
+  .map-box{overflow:hidden;min-height:440px;filter:invert(.92) hue-rotate(180deg) contrast(.92) brightness(.92);border:1px solid rgba(201,151,62,.22)}
+  .map-box iframe{width:100%;height:100%;min-height:440px;border:0}
+
+  /* ═══ FOOTER ═══ */
+  footer{background:var(--noir);color:var(--cream-dim);text-align:center;padding:90px 24px 0;border-top:1px solid rgba(201,151,62,.14)}
+  footer .f-mark{width:52px;height:52px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:22px;margin:0 auto}
+  footer .f-name{font-family:'Playfair Display',serif;font-size:30px;color:var(--cream);letter-spacing:2px;margin-top:20px}
+  footer .f-tag{font-size:9.5px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-bright);margin-top:8px}
+  .f-links{display:flex;gap:36px;justify-content:center;margin:44px 0;flex-wrap:wrap}
+  .f-links a{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream-dim);transition:.3s}
+  .f-links a:hover{color:var(--gold-bright)}
+  .f-bottom{border-top:1px solid rgba(201,151,62,.14);padding:24px;font-size:12px;letter-spacing:.5px;font-weight:300}
+  .f-bottom b{color:var(--cream)}
+
+  /* ═══ FLOATING ═══ */
+  .wa-float{position:fixed;bottom:26px;right:26px;z-index:950;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.4);transition:.3s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:29px;height:29px;fill:#fff}
+  .bot-float{position:fixed;bottom:94px;right:26px;z-index:950;width:58px;height:58px;border-radius:50%;background:var(--noir);border:1px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:23px;color:var(--gold-bright);box-shadow:0 10px 30px rgba(0,0,0,.5);transition:.3s}
+  .bot-float:hover{transform:scale(1.08);background:var(--gold);color:#1a1206}
+
+  /* ═══ CONCIERGE CHAT ═══ */
+  .chat-panel{position:fixed;bottom:94px;right:26px;z-index:960;width:368px;max-width:calc(100vw - 32px);height:535px;max-height:calc(100vh - 130px);background:var(--charcoal);box-shadow:0 30px 80px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(201,151,62,.35)}
+  .chat-panel.open{display:flex}
+  .chat-head{background:var(--noir);color:var(--cream);padding:19px 20px;display:flex;align-items:center;gap:13px;border-bottom:1px solid rgba(201,151,62,.3)}
+  .chat-head .bot-av{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;color:var(--gold-bright)}
+  .chat-head b{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;display:block}
+  .chat-head small{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-bright)}
+  .chat-close{margin-left:auto;background:none;border:none;color:var(--cream);font-size:22px;cursor:pointer;line-height:1;font-weight:200}
+  .chat-body{flex:1;overflow-y:auto;padding:17px;display:flex;flex-direction:column;gap:11px;background:var(--charcoal-2)}
+  .msg{max-width:85%;padding:12px 15px;font-size:13.5px;line-height:1.6;white-space:pre-line;font-weight:300}
+  .msg.bot{background:var(--noir);border:1px solid rgba(201,151,62,.18);align-self:flex-start;color:var(--cream)}
+  .msg.user{background:var(--gold);color:#1a1206;align-self:flex-end;font-weight:400}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start}
+  .chip{background:transparent;border:1px solid var(--gold);color:var(--gold-bright);padding:8px 15px;font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase;font-weight:400;cursor:pointer;transition:.3s;font-family:'Outfit',sans-serif}
+  .chip:hover{background:var(--gold);color:#1a1206}
+  .chat-input{display:flex;gap:10px;padding:14px;background:var(--noir);border-top:1px solid rgba(201,151,62,.2)}
+  .chat-input input{flex:1;border:none;border-bottom:1px solid rgba(244,239,228,.25);padding:9px 4px;font-size:14px;font-family:'Outfit',sans-serif;font-weight:300;background:transparent;color:var(--cream);border-radius:0}
+  .chat-input input:focus{outline:none;border-bottom-color:var(--gold)}
+  .chat-input button{width:42px;height:42px;border:1px solid var(--gold);background:transparent;color:var(--gold-bright);font-size:15px;cursor:pointer;transition:.3s}
+  .chat-input button:hover{background:var(--gold);color:#1a1206}
+  .typing{display:inline-flex;gap:4px;padding:14px}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}
+  .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  @media(max-width:480px){
+    .chat-panel{right:16px;bottom:86px}
+    .wa-float{bottom:16px;right:16px}
+    .bot-float{bottom:86px;right:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <span class="mark">❋</span>
+    <span><b>Blue Plum</b><small>Multi-Cuisine · Salt Lake</small></span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Ambience</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Visit</a>
+    <a href="#reserve" class="nav-cta">Reserve a Table</a>
+  </div>
+  <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-in">
+    <div class="est">Sector 2 &nbsp;·&nbsp; Salt Lake &nbsp;·&nbsp; Kolkata</div>
+    <h1>Fine Dining,<br>Made <em>Unforgettable</em></h1>
+    <p class="sub">Kolkata's newest destination for North Indian, Continental, Oriental &amp; Italian cuisine — in an ambience built for evenings you'll remember.</p>
+    <div class="hero-ctas">
+      <a href="#reserve" class="btn btn-gold">Reserve a Table</a>
+      <a href="#menu" class="btn btn-ghost">View the Menu</a>
+    </div>
+    <div class="hero-rating">
+      <div class="hr-item"><b>4.3 ★</b><span>495+ Reviews</span></div>
+      <div class="hr-item"><b>₹1,200</b><span>For Two</span></div>
+      <div class="hr-item"><b>Multi</b><span>Cuisine</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+<!-- ═══════ TICKER ═══════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>North Indian <i>❋</i></span><span>Continental <i>❋</i></span><span>Oriental <i>❋</i></span><span>Italian <i>❋</i></span><span>Chinese <i>❋</i></span><span>Biryani <i>❋</i></span>
+    <span>North Indian <i>❋</i></span><span>Continental <i>❋</i></span><span>Oriental <i>❋</i></span><span>Italian <i>❋</i></span><span>Chinese <i>❋</i></span><span>Biryani <i>❋</i></span>
+  </div>
+</div>
+
+<!-- ═══════ STORY ═══════ -->
+<section class="story">
+  <div class="story-in">
+    <div class="story-photo rv">
+      <img class="main-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop" alt="Blue Plum fine dining ambience" loading="lazy">
+      <div class="story-badge"><b>495+</b><small>5★ Reviews</small></div>
+    </div>
+    <div class="story-text">
+      <div class="kicker rv">Our Story</div>
+      <h2 class="sec-title rv">A New Kind of <em>Grandeur</em><br>in Salt Lake</h2>
+      <p class="rv">Blue Plum arrived in Sector 2 with one promise — a dining experience that feels as good as the food tastes. Spacious seating, warm lighting, and a kitchen that moves fluently between North Indian, Continental, Oriental and Italian menus.</p>
+      <p class="rv">Whether it's a quiet date, a family dinner, or a celebration that needs remembering — Blue Plum has quietly become Kolkata food-lovers' favourite new address.</p>
+      <div class="story-stats">
+        <div class="rv"><b>4.3<i style="font-style:normal">★</i></b><span>Average Rating</span></div>
+        <div class="rv"><b>6+</b><span>Cuisines</span></div>
+        <div class="rv"><b>1.6K<i style="font-style:normal">+</i></b><span>Instagram Followers</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MENU ═══════ -->
+<section class="menu-sec" id="menu">
+  <div class="wrap center">
+    <div class="kicker centered rv">The Menu</div>
+    <h2 class="sec-title rv">Chef's <em>Recommendations</em></h2>
+    <p class="sec-sub rv" style="margin:0 auto">A taste of what awaits — the full menu spans six cuisines and is shared on arrival.</p>
+    <div class="menu-tabs rv">
+      <button class="mtab active" data-cat="starters">Starters</button>
+      <button class="mtab" data-cat="mains">Mains</button>
+      <button class="mtab" data-cat="desserts">Desserts &amp; Drinks</button>
+    </div>
+
+    <!-- NOTE FOR SETUP: dish names & prices pulled from the restaurant's live Zomato menu — confirm current prices/availability with the owner before going live -->
+    <div class="dish-cat active" id="cat-starters">
+      <div class="dish rv">
+        <div class="d-img"><span class="d-tag">Popular</span><img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&q=75&auto=format&fit=crop" alt="Crispy Chilli Baby Corn"></div>
+        <div class="d-body"><div class="dish-top"><h4>Crispy Chilli Baby Corn</h4><span class="price">₹349</span></div><p>Golden-fried baby corn tossed in a fiery oriental chilli glaze.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&q=75&auto=format&fit=crop" alt="Tandoori Atishi Aloo"></div>
+        <div class="d-body"><div class="dish-top"><h4>Tandoori Atishi Aloo</h4><span class="price">₹299</span></div><p>Smoky tandoor-charred potatoes with a bold spiced marinade.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><span class="d-tag">Chef's Pick</span><img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=500&q=75&auto=format&fit=crop" alt="Kasundi Bhetki"></div>
+        <div class="d-body"><div class="dish-top"><h4>Kasundi Bhetki</h4><span class="price">Market Price</span></div><p>Bengal's classic mustard bhetki, Blue Plum's own take.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=500&q=75&auto=format&fit=crop" alt="Texas Chicken Strips"></div>
+        <div class="d-body"><div class="dish-top"><h4>Texas Chicken Strips</h4><span class="price">₹399</span></div><p>Crunchy spiced chicken strips with a smoky Texas glaze.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&q=75&auto=format&fit=crop" alt="Paneer Tikka"></div>
+        <div class="d-body"><div class="dish-top"><h4>Paneer Tikka</h4><span class="price">Market Price</span></div><p>Char-grilled cottage cheese, marinated in-house spices.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&q=75&auto=format&fit=crop" onerror="this.src='https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=500&q=75&auto=format&fit=crop'" alt="French Fries"></div>
+        <div class="d-body"><div class="dish-top"><h4>French Fries</h4><span class="price">₹149</span></div><p>Golden, crisp, and always the table's first casualty.</p></div>
+      </div>
+    </div>
+
+    <div class="dish-cat" id="cat-mains">
+      <div class="dish rv">
+        <div class="d-img"><span class="d-tag">Signature</span><img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=500&q=75&auto=format&fit=crop" alt="Gondhoraj Tandoori Fish"></div>
+        <div class="d-body"><div class="dish-top"><h4>Gondhoraj Tandoori Fish</h4><span class="price">Market Price</span></div><p>Fragrant lime-marinated fish, char-grilled — a guest favourite.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&q=75&auto=format&fit=crop" alt="Chicken Lababdar"></div>
+        <div class="d-body"><div class="dish-top"><h4>Chicken Lababdar</h4><span class="price">Market Price</span></div><p>Rich tomato-cashew gravy, slow-simmered with tender chicken.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1478144592103-25e218a04891?w=500&q=75&auto=format&fit=crop" alt="Sriracha Lamb"></div>
+        <div class="d-body"><div class="dish-top"><h4>Sriracha Lamb</h4><span class="price">Market Price</span></div><p>Slow-cooked lamb with an Oriental sriracha finish.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1516100882582-96c3a05fe590?w=500&q=75&auto=format&fit=crop" onerror="this.src='https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=500&q=75&auto=format&fit=crop'" alt="Risotto"></div>
+        <div class="d-body"><div class="dish-top"><h4>Risotto</h4><span class="price">Market Price</span></div><p>Creamy Italian rice, finished tableside-style.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=75&auto=format&fit=crop" alt="Roti and Mutton"></div>
+        <div class="d-body"><div class="dish-top"><h4>Roti &amp; Mutton Curry</h4><span class="price">Market Price</span></div><p>Slow-braised mutton, deeply spiced, with fresh tandoori roti.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500&q=75&auto=format&fit=crop" onerror="this.src='https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&q=75&auto=format&fit=crop'" alt="Hong Kong Fried Rice"></div>
+        <div class="d-body"><div class="dish-top"><h4>Hong Kong Fried Rice</h4><span class="price">Market Price</span></div><p>Wok-tossed fried rice, an Oriental favourite among regulars.</p></div>
+      </div>
+    </div>
+
+    <div class="dish-cat" id="cat-desserts">
+      <div class="dish rv">
+        <div class="d-img"><span class="d-tag">Must Try</span><img src="https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?w=500&q=75&auto=format&fit=crop" alt="Brownie with Ice Cream"></div>
+        <div class="d-body"><div class="dish-top"><h4>Brownie with Ice Cream</h4><span class="price">Market Price</span></div><p>Warm fudge brownie, cold vanilla — the classic ending.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=500&q=75&auto=format&fit=crop" alt="Beauty of Blueberry"></div>
+        <div class="d-body"><div class="dish-top"><h4>Beauty of Blueberry</h4><span class="price">Market Price</span></div><p>House dessert special — a Blue Plum signature.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=75&auto=format&fit=crop" alt="Green Apple Mojito"></div>
+        <div class="d-body"><div class="dish-top"><h4>Green Apple Mojito</h4><span class="price">Market Price</span></div><p>Crisp, refreshing, and the table's favourite mocktail.</p></div>
+      </div>
+      <div class="dish rv">
+        <div class="d-img"><img src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=500&q=75&auto=format&fit=crop" alt="Iced Tea"></div>
+        <div class="d-body"><div class="dish-top"><h4>Iced Tea</h4><span class="price">Market Price</span></div><p>Cool, lightly brewed, perfect between courses.</p></div>
+      </div>
+    </div>
+
+    <p class="menu-note rv">Full menu &amp; today's specials shared on <a href="https://wa.me/917980535815?text=Hi%20Blue%20Plum%2C%20could%20I%20see%20the%20full%20menu%3F" target="_blank" rel="noopener">WhatsApp</a> — just ask.</p>
+  </div>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<div class="gallery" id="gallery">
+  <!-- NOTE FOR SETUP: replace stock photos with real restaurant interior/food photos before going live -->
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=75&auto=format&fit=crop" alt="Fine dining table setting" loading="lazy"><span>The Table</span></div>
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=700&q=75&auto=format&fit=crop" alt="Restaurant interior" loading="lazy"><span>The Ambience</span></div>
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1616690710400-a16d146927c5?w=700&q=75&auto=format&fit=crop" alt="Chef plating a dish" loading="lazy"><span>The Kitchen</span></div>
+  <div class="g-item"><img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?w=700&q=75&auto=format&fit=crop" alt="Evening dining atmosphere" loading="lazy"><span>The Evening</span></div>
+</div>
+
+<!-- ═══════ EXPERIENCE ═══════ -->
+<section class="experience">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="kicker centered">Why Blue Plum</div>
+      <h2 class="sec-title">Built for Evenings <em>Worth Remembering</em></h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-item rv"><span class="e-ico">❋</span><h3>Six Cuisines, One Kitchen</h3><p>North Indian to Italian — a menu that never runs out of reasons to return.</p></div>
+      <div class="exp-item rv"><span class="e-ico">❋</span><h3>Romantic &amp; Family-Ready</h3><p>Intimate enough for a date, spacious enough for the whole family.</p></div>
+      <div class="exp-item rv"><span class="e-ico">❋</span><h3>Ambience First</h3><p>Warm lighting and thoughtful seating — the room does half the work.</p></div>
+      <div class="exp-item rv"><span class="e-ico">❋</span><h3>Loved by Kolkata</h3><p>495+ five-star reviews and counting, since our very first month.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ REVIEWS ═══════ -->
+<section class="quote-sec" id="reviews">
+  <span class="mark rv">❝</span>
+  <!-- NOTE FOR SETUP: replace with verbatim reviews copied from Google/Zomato before going live -->
+  <div class="quote-slide rv" id="quoteSlide">
+    <blockquote id="qText">Nice ambience and good food are the highlights of this place. We had Gondhoraj Tandoori Fish, Hong Kong Fried Rice, Sriracha Lamb and Brownie with ice cream — every dish landed.</blockquote>
+    <div class="attr" id="qAttr">Verified Diner &nbsp;·&nbsp; <b>Zomato Review</b></div>
+  </div>
+  <div class="q-dots" id="qDots">
+    <button class="q-dot on" aria-label="Review 1"></button>
+    <button class="q-dot" aria-label="Review 2"></button>
+    <button class="q-dot" aria-label="Review 3"></button>
+  </div>
+  <div class="hero-rating rv" style="margin-top:36px">
+    <div class="hr-item"><b>4.3 ★</b><span>495+ Reviews</span></div>
+  </div>
+</section>
+
+<!-- ═══════ RESERVE ═══════ -->
+<section class="reserve" id="reserve">
+  <div class="reserve-in">
+    <div>
+      <div class="kicker rv">Reservations</div>
+      <h2 class="sec-title rv">Reserve Your <em>Table</em></h2>
+      <p class="r-sub rv">Share your details and your request goes straight to Blue Plum's WhatsApp — confirmed personally, usually within minutes.</p>
+      <div class="r-perk rv"><span class="p-mark">✓</span><span><b>Instant WhatsApp confirmation</b><p>No calls, no waiting on hold.</p></span></div>
+      <div class="r-perk rv"><span class="p-mark">✓</span><span><b>No payment to reserve</b><p>Your table is held — pay only when you dine.</p></span></div>
+      <div class="r-perk rv"><span class="p-mark">✓</span><span><b>Celebrating something?</b><p>Tell us — we'll make the table feel like it.</p></span></div>
+    </div>
+    <div class="res-card rv">
+      <h3>Book a Table</h3>
+      <form id="bookForm">
+        <div class="form-row">
+          <div class="rfield"><label>Name</label><input type="text" id="bName" placeholder="Your name" required></div>
+          <div class="rfield"><label>Phone</label><input type="tel" id="bPhone" placeholder="98300 12345" required></div>
+        </div>
+        <div class="form-row">
+          <div class="rfield"><label>Date</label><input type="date" id="bDate" required></div>
+          <div class="rfield"><label>Time</label><input type="time" id="bTime" required></div>
+        </div>
+        <div class="form-row">
+          <div class="rfield"><label>Party Size</label>
+            <select id="bGuests">
+              <option>2 Guests</option><option>3 Guests</option><option>4 Guests</option>
+              <option>5–6 Guests</option><option>7+ Guests (large group)</option>
+            </select>
+          </div>
+          <div class="rfield"><label>Occasion</label>
+            <select id="bOccasion">
+              <option>Just Dining</option><option>Date Night</option>
+              <option>Birthday</option><option>Anniversary</option>
+              <option>Family Gathering</option><option>Business Meal</option>
+            </select>
+          </div>
+        </div>
+        <div class="rfield" style="margin-bottom:8px"><label>Note (optional)</label><input type="text" id="bMsg" placeholder="Window seat, allergies, cake arrangement…"></div>
+        <button type="submit" class="btn btn-wa" style="width:100%;margin-top:24px">Reserve via WhatsApp</button>
+      </form>
+      <p class="res-note">Opens WhatsApp with your details pre-filled — just press send.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOURS ═══════ -->
+<section class="hours" id="hours">
+  <div class="wrap center">
+    <div class="kicker centered rv">Timings</div>
+    <h2 class="sec-title rv">When to Find <em>Us</em></h2>
+    <!-- NOTE FOR SETUP: confirm exact hours with the owner before going live -->
+    <div class="hours-card rv">
+      <table>
+        <tr><th>Session</th><th>Days</th><th>Time</th></tr>
+        <tr><td><b>Lunch</b></td><td>Daily</td><td>12:30 PM – 4:00 PM</td></tr>
+        <tr><td><b>Dinner</b></td><td>Daily</td><td>7:00 PM – 11:30 PM</td></tr>
+      </table>
+    </div>
+    <p class="hours-note rv">Open daily · EE-5, Ground Floor, Sector 2, Salt Lake</p>
+  </div>
+</section>
+
+<!-- ═══════ VISIT ═══════ -->
+<section class="visit" id="visit">
+  <div class="visit-in">
+    <div>
+      <div class="kicker rv">Find Us</div>
+      <h2 class="sec-title rv">Visit <em>Blue Plum</em></h2>
+      <dl class="v-lines">
+        <div class="rv"><dt>Address</dt><dd>EE-5, Ground Floor, Sector 2<small>Bidhannagar, Salt Lake, Kolkata 700091</small></dd></div>
+        <div class="rv"><dt>Telephone</dt><dd><a href="tel:+917980535815">079805 35815</a></dd></div>
+        <div class="rv"><dt>Cuisine</dt><dd>North Indian · Continental · Oriental · Italian · Chinese · Biryani</dd></div>
+      </dl>
+    </div>
+    <div class="map-box rv">
+      <iframe src="https://www.google.com/maps?q=Blue+Plum+Multi-Cuisine+Restaurant+EE-5+Sector+2+Salt+Lake+Kolkata&output=embed" loading="lazy" title="Blue Plum location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <span class="f-mark">❋</span>
+  <div class="f-name">Blue Plum</div>
+  <div class="f-tag">Multi-Cuisine Fine Dining · Salt Lake</div>
+  <div class="f-links">
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Ambience</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#reserve">Reserve</a>
+    <a href="tel:+917980535815">Call</a>
+    <a href="https://wa.me/917980535815" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="f-bottom">© 2026 Blue Plum Multi-Cuisine Restaurant — website crafted by <b>Pratyush Web Design</b></div>
+</footer>
+
+<!-- ═══════ FLOATING WHATSAPP ═══════ -->
+<a class="wa-float" href="https://wa.me/917980535815?text=Hi%20Blue%20Plum%2C%20I%20would%20like%20to%20reserve%20a%20table." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2c2.2 1.2 4.7 1.9 7.4 1.9 8.4 0 15.2-6.8 15.2-15.2S24.4.8 16 .8zm0 27.7c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.3-2-2-4.4-2-6.9C3.1 8.9 8.9 3.1 16 3.1S28.9 8.9 28.9 16 23.1 28.5 16 28.5zm7.1-9.5c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<!-- ═══════ CONCIERGE ═══════ -->
+<button class="bot-float" id="botBtn" aria-label="Open concierge chat">❋</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="bot-av">B</div>
+    <div><b>Blue Plum Concierge</b><small>Menu · Hours · Reservations</small></div>
+    <button class="chat-close" id="chatClose">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input">
+    <input type="text" id="chatText" placeholder="Ask us anything…" autocomplete="off">
+    <button id="chatSend" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<script>
+/* ═══════ CONFIG — change number & restaurant info here ═══════ */
+const WA_NUMBER = "917980535815";
+const REST = {
+  name: "Blue Plum",
+  address: "EE-5, Ground Floor, Sector 2, Salt Lake, Kolkata 700091",
+  phone: "079805 35815",
+  hours: "Lunch 12:30–4:00 PM & Dinner 7:00–11:30 PM, daily"
+};
+
+/* ═══════ NAV SCROLL STATE ═══════ */
+const nav = document.getElementById("nav");
+function navState(){ nav.classList.toggle("scrolled", window.scrollY > 60); }
+
+/* ═══════ SCROLL REVEAL (robust, no IntersectionObserver dependency) ═══════ */
+const rvEls = Array.from(document.querySelectorAll(".rv"));
+function inView(el, margin){
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight * (margin || .93) && r.bottom > 0;
+}
+function checkReveal(){
+  navState();
+  rvEls.forEach(el => { if(!el.classList.contains("in") && inView(el)) el.classList.add("in"); });
+}
+window.addEventListener("scroll", checkReveal, {passive: true});
+window.addEventListener("resize", checkReveal, {passive: true});
+window.addEventListener("load", checkReveal);
+checkReveal();
+setTimeout(() => rvEls.forEach(el => el.classList.add("in")), 4000);
+
+/* ═══════ MOBILE MENU — close after tapping a link ═══════ */
+const navLinksBox = document.getElementById("navLinks");
+navLinksBox.querySelectorAll("a").forEach(a =>
+  a.addEventListener("click", () => navLinksBox.classList.remove("open"))
+);
+
+/* ═══════ MENU TABS ═══════ */
+document.querySelectorAll(".mtab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".mtab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    document.querySelectorAll(".dish-cat").forEach(c => c.classList.remove("active"));
+    document.getElementById("cat-" + tab.dataset.cat).classList.add("active");
+    checkReveal();
+  });
+});
+
+/* ═══════ TESTIMONIAL ROTATION ═══════ */
+const QUOTES = [
+  ["Nice ambience and good food are the highlights of this place. We had Gondhoraj Tandoori Fish, Hong Kong Fried Rice, Sriracha Lamb and Brownie with ice cream — every dish landed.", "Verified Diner", "Zomato Review"],
+  ["This newly opened restaurant serves delicious fusion delicacies in a beautiful fine-dine setting with spacious seating. Perfect for a date night.", "Kolkata Food Blogger", "Instagram Review"],
+  ["One of the finest fine-dine restaurants in Saltlake — colourful ambience, generous portions, and a menu that keeps surprising us.", "Verified Diner", "Google Review"]
+];
+let qi = 0, qTimer = null;
+const qText = document.getElementById("qText");
+const qAttr = document.getElementById("qAttr");
+const qDots = Array.from(document.querySelectorAll(".q-dot"));
+function showQuote(i){
+  qi = i;
+  qText.style.opacity = 0;
+  setTimeout(() => {
+    qText.textContent = QUOTES[i][0];
+    qAttr.innerHTML = QUOTES[i][1] + " &nbsp;·&nbsp; <b>" + QUOTES[i][2] + "</b>";
+    qText.style.opacity = 1;
+  }, 400);
+  qDots.forEach((d, j) => d.classList.toggle("on", j === i));
+}
+qDots.forEach((d, j) => d.addEventListener("click", () => { showQuote(j); restartQ(); }));
+function restartQ(){
+  clearInterval(qTimer);
+  qTimer = setInterval(() => showQuote((qi + 1) % QUOTES.length), 6000);
+}
+restartQ();
+
+/* ═══════ RESERVATION FORM → WHATSAPP ═══════ */
+document.getElementById("bookForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = document.getElementById("bName").value.trim();
+  const phone = document.getElementById("bPhone").value.trim();
+  const date = document.getElementById("bDate").value || "Any day";
+  const time = document.getElementById("bTime").value || "Any time";
+  const guests = document.getElementById("bGuests").value;
+  const occasion = document.getElementById("bOccasion").value;
+  const msg = document.getElementById("bMsg").value.trim();
+  const text =
+`❋ *New Table Reservation — Blue Plum*
+Name: ${name}
+Phone: ${phone}
+Date: ${date}
+Time: ${time}
+Guests: ${guests}
+Occasion: ${occasion}` + (msg ? `\nNote: ${msg}` : "");
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
+});
+
+/* ═══════ CONCIERGE CHAT ═══════ */
+const botBtn = document.getElementById("botBtn");
+const panel = document.getElementById("chatPanel");
+const body = document.getElementById("chatBody");
+const input = document.getElementById("chatText");
+const sendBtn = document.getElementById("chatSend");
+
+const QUICK = ["Reserve a Table","Menu","Hours","Location","Party Size","Occasion Setup","Prices"];
+
+const BRAIN = [
+  {k:["menu","dish","food","cuisine","starter","main course","dessert","veg","non veg","non-veg"],
+   a:"Our menu spans North Indian, Continental, Oriental, Italian, Chinese and Biryani. Chef's Recommendations are on this page — starters, mains, desserts & drinks.\n\nThe full menu is shared instantly on WhatsApp. Want me to connect you?"},
+  {k:["reserve","reservation","table","book","booking","slot"],
+   a:"With pleasure. Two easy ways:\n\n1. The reservation form on this page — your request arrives on our WhatsApp\n2. Or message us directly\n\nWe confirm personally, usually within minutes."},
+  {k:["time","timing","hour","open","close","kobe","when","today"],
+   a:REST.hours + ".\n\nWeekends get busy — a reservation means your table is waiting. Want the WhatsApp link?"},
+  {k:["location","address","where","kothay","kahan","direction","reach","sector 2"],
+   a:"You'll find us at " + REST.address + ".\n\nSee the map in the Visit section, or ask us on WhatsApp and we'll guide you in."},
+  {k:["price","cost","expensive","budget","kitna","koto","much","for two"],
+   a:"Average cost is around ₹1,200 for two, though it depends on what you order — we have options across a wide range.\n\nAsk us on WhatsApp for today's specials and exact pricing."},
+  {k:["party","group","people","guest","how many","large"],
+   a:"We seat everything from an intimate table for two to larger family or group gatherings. Just mention your party size while reserving and we'll set the right table."},
+  {k:["birthday","anniversary","celebrat","date night","romantic","occasion","cake"],
+   a:"We'd love to help you celebrate. Mention the occasion in your reservation note — birthday, anniversary, date night — and we'll make the table feel like it. Cake arrangements can be discussed on WhatsApp too."},
+  {k:["parking","valet","car"],
+   a:"For parking details for your visit, please ask our team directly on WhatsApp — happy to guide you."},
+  {k:["deliver","takeaway","order online","zomato","swiggy"],
+   a:"We're primarily a dine-in experience, but for delivery or takeaway options, message us on WhatsApp and we'll help you out."},
+  {k:["hi","hello","hey","namaskar","namaste","nomoshkar"],
+   a:"Welcome to Blue Plum. I can help with our menu, hours, table reservations and more — ask away, or choose a topic below."},
+  {k:["thank","dhonnobad","thanks"],
+   a:"Our pleasure. We look forward to hosting you at Blue Plum."}
+];
+
+const FALLBACK = "That one's beyond your concierge — our team will answer personally on WhatsApp (tap the green button), or call " + REST.phone + ".";
+
+function addMsg(text, who){
+  const d = document.createElement("div");
+  d.className = "msg " + who;
+  d.textContent = text;
+  body.appendChild(d);
+  body.scrollTop = body.scrollHeight;
+}
+function addChips(){
+  const c = document.createElement("div");
+  c.className = "chips";
+  QUICK.forEach(q => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = q;
+    b.onclick = () => { handleUser(q); };
+    c.appendChild(b);
+  });
+  body.appendChild(c);
+  body.scrollTop = body.scrollHeight;
+}
+function botReply(text){
+  const t = document.createElement("div");
+  t.className = "msg bot typing";
+  t.innerHTML = "<span></span><span></span><span></span>";
+  body.appendChild(t);
+  body.scrollTop = body.scrollHeight;
+  setTimeout(() => { t.remove(); addMsg(text, "bot"); }, 700 + Math.random()*500);
+}
+function handleUser(text){
+  if(!text.trim()) return;
+  addMsg(text, "user");
+  input.value = "";
+  const low = text.toLowerCase();
+  const hit = BRAIN.find(item => item.k.some(kw => low.includes(kw)));
+  botReply(hit ? hit.a : FALLBACK);
+}
+botBtn.addEventListener("click", () => {
+  panel.classList.toggle("open");
+  if(panel.classList.contains("open") && body.children.length === 0){
+    botReply("Welcome to Blue Plum.\n\nI'm your concierge — ask about our menu, hours, table reservations, or choose a topic below.");
+    setTimeout(addChips, 1300);
+  }
+});
+document.getElementById("chatClose").addEventListener("click", () => panel.classList.remove("open"));
+sendBtn.addEventListener("click", () => handleUser(input.value));
+input.addEventListener("keydown", e => { if(e.key === "Enter") handleUser(input.value); });
+</script>
+</body>
+</html>
